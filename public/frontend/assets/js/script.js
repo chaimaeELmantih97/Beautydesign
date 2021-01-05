@@ -398,7 +398,7 @@
             autoplay: true,
             smartSpeed: 1200,
             margin: 30,
-            // loop: true,
+            loop: true,
             autoplayHoverPause: true,
             nav: true,
             navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
@@ -614,7 +614,7 @@
             nav: false,
             dots:false,
             autoplay: true,
-            smartSpeed:1200,
+            smartSpeed: 1200,
             autoplayHoverPause: true,
             responsive: {
                 0: {

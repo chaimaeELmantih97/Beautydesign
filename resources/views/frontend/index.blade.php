@@ -54,7 +54,7 @@
                     </p>
                     <p>
                         <div class="slide-btns" data-swiper-parallax="500">
-                            <a class="theme-btn" href="{{route('product-grids')}}">Savoir Plus</a>
+                            <a class="theme-btn" href="{{route('about-us')}}">Savoir Plus</a>
                         </div>
                     </p>
                     <div class="contact-number">
