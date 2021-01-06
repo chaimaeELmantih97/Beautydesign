@@ -309,7 +309,7 @@ class FrontendController extends Controller
             $post=$post->where('status','active')->orderBy('id','DESC')->paginate($_GET['show']);
         }
         else{
-            $post=$post->where('status','active')->orderBy('id','DESC')->paginate(9);
+            $post=$post->where('status','active')->orderBy('id','DESC')->paginate(5);
         }
         // $post=Post::where('status','active')->paginate(8);
         $rcnt_post=Post::where('status','active')->orderBy('id','DESC')->limit(3)->get();

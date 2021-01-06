@@ -65,6 +65,13 @@
                             </div>
                         @endforeach
                     </div>
+                    @if($posts instanceof \Illuminate\Pagination\LengthAwarePaginator)
+                        <div class="shop_toolbar t_bottom text-center">
+                            <div class="pagination">
+                                {{$posts->appends($_GET)->links()}}
+                            </div>
+                        </div>
+                    @endif
                 </div>
                 <div class="col col-md-4">
                     <div class="blog-sidebar">
