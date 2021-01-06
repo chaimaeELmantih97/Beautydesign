@@ -577,7 +577,7 @@ img {
 
 .page-title:before {
     content: "";
-    background-color: #f1c650a2;
+    background-color: #2424244f;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -5971,7 +5971,7 @@ img {
 .breadcrumb>li,
 .breadcrumb>li a {
     display: inline-block;
-    color: #244224;
+    color: #fff;
 }
 
 .dark-overlay:before {

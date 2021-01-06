@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col col-xs-12">
-                    <h2 style="margin-top: 50px,">Promotions</h2>
+                    <h2 style="margin-top: 50px;">Promotions</h2>
                     <ol class="breadcrumb">
                         <li><a href="{{route('home')}}">Accueil</a></li>
                         <li>Promotions</li>
