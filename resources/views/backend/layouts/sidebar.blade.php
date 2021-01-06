@@ -90,7 +90,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#serviceCollapse"
             aria-expanded="true" aria-controls="serviceCollapse">
-            <i class="fas fa-table"></i>
+            <i class="fas fa-concierge-bell"></i>
             <span>Services</span>
         </a>
         <div id="serviceCollapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -105,7 +105,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#catalogCollapse" aria-expanded="true"
             aria-controls="catalogCollapse">
-            <i class="fas fa-table"></i>
+            <i class="fas fa-file"></i>
             <span>Catalogues</span>
         </a>
         <div id="catalogCollapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -120,7 +120,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#testimonialCollapse" aria-expanded="true"
             aria-controls="testimonialCollapse">
-            <i class="fas fa-table"></i>
+            <i class="fas fa-quote-right"></i>
             <span>Témoignages</span>
         </a>
         <div id="testimonialCollapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -135,7 +135,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#promotionCollapse"
             aria-expanded="true" aria-controls="promotionCollapse">
-            <i class="fas fa-table"></i>
+            <i class="fas fa-star"></i>
             <span>Promotions</span>
         </a>
         <div id="promotionCollapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -150,21 +150,21 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#brandCollapse" aria-expanded="true"
             aria-controls="brandCollapse">
-            <i class="fas fa-table"></i>
-            <span>Clients</span>
+            <i class="fas fa-handshake"></i>
+            <span>Références</span>
         </a>
         <div id="brandCollapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Options de Client:</h6>
-                <a class="collapse-item" href="{{route('brand.index')}}">Clients</a>
-                <a class="collapse-item" href="{{route('brand.create')}}">Ajouter un Client</a>
+                <h6 class="collapse-header">Options de Référence:</h6>
+                <a class="collapse-item" href="{{route('brand.index')}}">Références</a>
+                <a class="collapse-item" href="{{route('brand.create')}}">Ajouter une Référence</a>
             </div>
         </div>
     </li>
     
     <li class="nav-item">
         <a class="nav-link" href="{{route('about.edit')}}">
-            <i class="fas fa-fw fa-chart-area"></i>
+            <i class="fas fa-address-card"></i>
             <span>À Propos</span></a>
     </li>
 

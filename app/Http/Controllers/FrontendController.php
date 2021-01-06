@@ -74,8 +74,12 @@ class FrontendController extends Controller
 
     public function productDetail($slug){
         $product_detail= Product::getProductBySlug($slug);
-        // dd($product_detail);
-        return view('frontend.pages.product_detail')->with('product_detail',$product_detail);
+
+        if($product_detail) {
+            return view('frontend.pages.product_detail')->with('product_detail',$product_detail);
+        } else {
+            return view('errors.404');
+        }
     }
 
     public function productGrids(){
@@ -248,6 +252,11 @@ class FrontendController extends Controller
     }
     public function productCat(Request $request){
         $products=Category::getProductByCat($request->slug);
+        
+        if(!$products) {
+            return view('errors.404');
+        }
+
         // return $request->slug;
         $recent_products=Product::where('status','active')->orderBy('id','DESC')->limit(3)->get();
 
@@ -255,12 +264,15 @@ class FrontendController extends Controller
             return view('frontend.pages.product-grids')->with('products',$products->products)->with('recent_products',$recent_products);
         }
         else{
-            return view('frontend.pages.product-lists')->with('products',$products->products)->with('recent_products',$recent_products);
+            return view('frontend.pages.product-grids')->with('products',$products->products)->with('recent_products',$recent_products);
         }
 
     }
     public function productSubCat(Request $request){
         $products=Category::getProductBySubCat($request->sub_slug);
+        if(!$products) {
+            return view('errors.404');
+        }
         // return $products;
         $recent_products=Product::where('status','active')->orderBy('id','DESC')->limit(3)->get();
 
@@ -268,7 +280,7 @@ class FrontendController extends Controller
             return view('frontend.pages.product-grids')->with('products',$products->sub_products)->with('recent_products',$recent_products);
         }
         else{
-            return view('frontend.pages.product-lists')->with('products',$products->sub_products)->with('recent_products',$recent_products);
+            return view('frontend.pages.product-grids')->with('products',$products->sub_products)->with('recent_products',$recent_products);
         }
 
     }
@@ -306,6 +318,9 @@ class FrontendController extends Controller
 
     public function blogDetail($slug){
         $post=Post::getPostBySlug($slug);
+        if(!$post) {
+            return view('errors.404');
+        }
         $rcnt_post=Post::where('status','active')->orderBy('id','DESC')->limit(3)->get();
         // return $post;
         return view('frontend.pages.blog-detail')->with('post',$post)->with('recent_posts',$rcnt_post);

@@ -19,4 +19,12 @@ class Brand extends Model
         return Brand::with('products')->where('slug',$slug)->first();
         // return Product::where('cat_id',$id)->where('child_cat_id',null)->paginate(10);
     }
+
+    public static function countActivePost(){
+        $data=Brand::where('status','active')->count();
+        if($data){
+            return $data;
+        }
+        return 0;
+    }
 }
