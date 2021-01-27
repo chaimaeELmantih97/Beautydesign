@@ -43,6 +43,12 @@ class ServiceController extends Controller
             'description'=>'string|required',
         ]);
         $data=$request->all();
+        $slug=Str::slug($request->title);
+        $count=service::where('slug',$slug)->count();
+        if($count>0){
+            $slug=$slug.'-'.date('ymdis').'-'.rand(0,999);
+        }
+        $data['slug']=$slug;
         $status=Service::create($data);
         if($status){
             request()->session()->flash('success','service ajoutée avec succès');

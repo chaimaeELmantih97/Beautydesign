@@ -1,105 +1,174 @@
 @extends('frontend.layouts.master')
 
-@section('title','Beauty Design - Article')
+@section('title','Beauty Design Design - Article')
 
 @section('main-content')
-    <!-- start page-title -->
-    <section class="page-title">
+
+<style>
+    .zs2 {
+        display: block !important;
+    }
+
+    .zs1 {
+        display: none !important;
+    }
+
+    .hamburger span {
+        background: #ffffff !important;
+    }
+
+    .iconC {
+        color: #ffffff;
+    }
+
+</style>
+@php
+$settings=DB::table('settings')->get();
+$posts=App\Models\Post::paginate(4);
+@endphp
+@foreach ($settings as $data)
+<header class="header">
+    <aside class="left-side">
+        <ul>
+            <li><a href="{{$data->facebook}}">FACEBOOK</a></li>
+            <li><a href="{{$data->instagram}}">INSTAGRAM</a></li>
+            <li><a href="{{$data->linkedin}}">LINKEDIN</a></li>
+        </ul>
+    </aside>
+    <div class="perspective" id="gl" data-imageOriginal="{{url('images/bg.jpg')}}"
+        data-imageDepth="{{url('images/bg.jpg')}}" data-horizontalThreshold="30" data-verticalThreshold="13">
         <div class="container">
-            <div class="row">
-                <div class="col col-xs-12">
-                    <h2 style="margin-top: 50px">Article</h2>
-                    <ol class="breadcrumb">
-                        <li><a href="{{route('home')}}">Accueil</a></li>
-                        <li>Article</li>
-                    </ol>
-                </div>
-            </div> <!-- end row -->
-        </div> <!-- end container -->
-    </section>
-    <!-- end page-title -->
-        
-    
-    <!-- start blog-single-section -->
-    <section class="blog-single-section section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col col-md-8">
-                    <div class="blog-content clearfix">
-                        <div class="post">
-                            <div class="entry-media">
-                                <img src="{{$post->photo}}" alt style="height: 450px; width: 100%; object-fit: cover">
-                            </div>
-                            @php
-                                $author_info=DB::table('users')->select('name')->where('id',$post->added_by)->get();
-                            @endphp
-                            <ul class="entry-meta">
-                                <li style="padding-top: 10px">
-                                    @foreach($author_info as $data)
-                                        Par <a>
-                                            @if($data->name)
-                                                {{$data->name}}
-                                            @else
-                                                Anonyme
-                                            @endif
-                                        </a>
-                                    @endforeach
-                                </li>
-                                <li>
-                                    @php
-                                        setlocale(LC_TIME,'fr_FR.UTF8', 'fr.UTF8', 'fr_FR.UTF-8', 'fr.UTF-8');
-                                        $date = strftime('Le %d %B, %Y', strtotime($post->created_at));
-                                    @endphp
-                                    {{$date}}
-                                </li>
-                            </ul>
-                            <h2>{{$post->title}}</h2>
-                            <p>
-                                {!! html_entity_decode($post->description) !!}
-                            </p>
-                            @if($post->quote)
-                                <blockquote> <i class="fa fa-quote-left"></i> {!! ($post->quote) !!}</blockquote>
+            <div class="tagline"><span></span>
+                <h6>Article</h6>
+            </div>
+            <!-- end tagline -->
+            <h1>Beauty<br>
+                <span>Design</span></h1>
+
+            <!-- end slide-btn -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- perspective end  -->
+</header>
+<!-- end header -->
+@endforeach
+<section class="news">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="post single-post wow fadeIn">
+              <figure class="post-image">
+                @if ($post->photo)
+                <img src="{{$post->photo}}" alt="Image">
+                @else
+                    <img src="{{asset('backend/img/thumbnail-default.jpg')}}" alt="Image">
+                @endif
+              </figure>
+              <!-- end news-image -->
+              <div class="post-content">
+                @php
+                setlocale(LC_TIME,'fr_FR.UTF8', 'fr.UTF8', 'fr_FR.UTF-8', 'fr.UTF-8');
+                $date = strftime('Le %d %B, %Y', strtotime($post->created_at));
+                @endphp
+              <div class="inner"> <small class="post-date">{{$date}}</small>
+                  <h3 class="post-title"><a href="#">{{$post->title}}</a></h3>
+                  <div class="post-author">
+                    @php
+                    $author_info=DB::table('users')->where('id',$post->added_by)->get();
+                    @endphp
+                    @if ($data->photo)
+                    <img src="{{$data->photo}}" alt="Image">
+                    @else
+                    <img src="{{asset('backend/img/avatar.png')}}" alt="Image">
+                    @endif
+
+                    <span>
+                        @foreach($author_info as $data)
+                        {{-- <img src="{{$data->photo}}" alt> --}}
+                        Par
+                        <a>
+                            @if($data->name)
+                            {{$data->name}}
+                            @else
+                            Anonyme
                             @endif
-                        </div>
+                        </a>
+                        @endforeach
+                    </span>
                     </div>
-                </div>
-                <div class="col col-md-4">
-                    <div class="blog-sidebar">
-                        <div class="widget search-widget">
-                            <h3>Recherche</h3>
-                            <form method="GET" action="{{route('blog.search')}}">
-                                <div>
-                                    <input type="text" name="search" class="form-control" placeholder="Rechercher">
-                                    <button type="submit"><i class="ti-search"></i></button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="widget recent-post-widget">
-                            <h3>Articles Récents</h3>
-                            <div class="posts">
-                                @foreach($recent_posts as $post)
-                                    <div class="post">
-                                        <div class="img-holder">
-                                            <img src="{{$post->photo}}" alt style="height: 80px; width: 100%; object-fit: cover;">
-                                        </div>
-                                        <div class="details">
-                                            <h4><a href="{{route('blog.detail',$post->slug)}}">{{$post->title}}</a></h4>
-                                            @php
-                                                setlocale(LC_TIME,'fr_FR.UTF8', 'fr.UTF8', 'fr_FR.UTF-8', 'fr.UTF-8');
-                                                $date = strftime('Le %d %B, %Y', strtotime($post->created_at));
-                                            @endphp
-                                            <span class="date">{{$date}}</span>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
+                  {{-- <ul class="social-share">
+                      <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                      <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                      <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                      <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                      <li class="youtube"><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                    </ul> --}}
+                      <h6>{!! $post->summary !!}</h6>
+                  {{-- <figure><img src="images/featured01.jpg" alt="Image"></figure> --}}
+                      {{-- <p> {!! $post->description !!}</p> --}}
+                  <blockquote>
+                  {!! $post->quote !!}
+                </blockquote>
+                <p>
+                    {!! $post->description !!}
+                </p>
+                  </div>
+                  <!-- end inner -->
+              </div>
+              <!-- end post-content -->
+          </div>
+          <!-- end post -->
+        </div>
+        <!-- end col-12 -->
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- end container -->
+  </section>
+@php
+    $oPosts=App\Models\Post::where('id','!=',$post->id)->get();
+@endphp
+<!-- end works -->
+<section class="work-with-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 wow fadeIn">
+                <h6>Blog associés</h6>
+                <h2>autres blogs</h2>
+            </div>
+        </div>
+        <div class="card-slider">
+            @foreach ($oPosts as $key => $p)
+            <div class="col-lg-12">
+                <div class="card border-0 w-100">
+                    {{-- <img class="card-img-top" src="https://picsum.photos/seed/picsum/200/200" alt="Card image cap"> --}}
+                    @if($p->photo)
+                    <img class="card-img-top" src="{{$p->photo}}" style="height: 200px;">
+                    @else
+                    <img class="card-img-top" src="{{asset('backend/img/thumbnail-default.jpg')}}"
+                        style="height: 200px;">
+                    @endif
+                    <div class="card-body">
+                        <h5 class="card-title"><em><b>{{$p->title}}</b></em></h5>
+                        <p>
+                            {!!$p->summary!!}
+                        </p>
+                    </div>
+                    <div
+                        style="background: #202020; width:100%; padding:10px; display:flex; justify-content: space-between">
+                        <a href="{{route('blog.detail',$p->slug)}}" style="color: #ffffff;">Savoir plus</a>
+                        <a href="{{route('blog.detail',$p->slug)}}" style="color: #ffffff;"><i class="fa fa-arrow-right"></i></a>
+
                     </div>
                 </div>
             </div>
-        </div> <!-- end container -->
-    </section>
-    <!-- end blog-single-section -->
+            @endforeach
+        </div>
+    </div>
+    <!-- end container -->
+</section>
+<!-- end work-with-us -->
 @endsection
 @push('styles')
 <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5f2e5abf393162001291e431&product=inline-share-buttons' async='async'></script>
@@ -107,7 +176,7 @@
 @push('scripts')
 <script>
 $(document).ready(function(){
-    
+
     (function($) {
         "use strict";
 
@@ -127,7 +196,7 @@ $(document).ready(function(){
             $( html).find('#parent_id').val(parent_id);
             $('#commentFormContainer').hide();
             $(this).parents('.comment-list').append(html).fadeIn('slow').addClass('appended');
-          });  
+          });
 
         $('.comment-list').on('click','.btn-reply.cancel',function(e){
             e.preventDefault();
@@ -143,7 +212,7 @@ $(document).ready(function(){
 
             $('#commentFormContainer').append(html);
         });
-        
+
  })(jQuery)
 })
 </script>

@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','Beauty Design - Promotions')
+@section('title','Beauty Design Design - Promotions')
 
 @section('main-content')
 
@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col col-xs-12">
-                    <h2 style="margin-top: 50px;">Promotions</h2>
+                    <h2 style="margin-top: 50px,">Promotions</h2>
                     <ol class="breadcrumb">
                         <li><a href="{{route('home')}}">Accueil</a></li>
                         <li>Promotions</li>
@@ -21,9 +21,9 @@
                 </div>
             </div> <!-- end row -->
         </div> <!-- end container -->
-    </section>        
+    </section>
 	<!-- end page-title -->
-	
+
 	<!-- start Service -->
     <section class="arkit-service section-padding">
         <div class="container">
@@ -67,11 +67,11 @@
                                 </div><!--/item--> --}}
                             @endforeach
                         </div>
-                        
+
                         @foreach ($promotions as $key => $promotion)
                         <script>
                                 newimage = new Image();
-                                newimage.src = '{{$promotion->photo}}'; 
+                                newimage.src = '{{$promotion->photo}}';
                                 newimage.onload = function()
                                 {
                                     var width = this.naturalWidth;
@@ -108,7 +108,7 @@
                                     </div>
 
                                     <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                                        <div class="pswp__share-tooltip"></div> 
+                                        <div class="pswp__share-tooltip"></div>
                                     </div>
 
                                     <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
@@ -120,7 +120,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <script>
                             var initPhotoSwipeFromDOM = function(gallerySelector) {
                                 var parseThumbnailElements = function(el) {
@@ -136,7 +136,7 @@
 
                                         figureEl = thumbElements[i]; // <figure> element
 
-                                        // include only element nodes 
+                                        // include only element nodes
                                         if(figureEl.nodeType !== 1) {
                                             continue;
                                         }
@@ -156,13 +156,13 @@
 
                                         if(figureEl.children.length > 1) {
                                             // <figcaption> content
-                                            item.title = figureEl.children[1].innerHTML; 
+                                            item.title = figureEl.children[1].innerHTML;
                                         }
 
                                         if(linkEl.children.length > 0) {
                                             // <img> thumbnail element, retrieving thumbnail url
                                             item.msrc = linkEl.children[0].getAttribute('src');
-                                        } 
+                                        }
 
                                         item.el = figureEl; // save link to element for getThumbBoundsFn
                                         items.push(item);
@@ -201,8 +201,8 @@
                                         index;
 
                                     for (var i = 0; i < numChildNodes; i++) {
-                                        if(childNodes[i].nodeType !== 1) { 
-                                            continue; 
+                                        if(childNodes[i].nodeType !== 1) {
+                                            continue;
                                         }
 
                                         if(childNodes[i] === clickedListItem) {
@@ -235,10 +235,10 @@
                                         if(!vars[i]) {
                                             continue;
                                         }
-                                        var pair = vars[i].split('=');  
+                                        var pair = vars[i].split('=');
                                         if(pair.length < 2) {
                                             continue;
-                                        }           
+                                        }
                                         params[pair[0]] = pair[1];
                                     }
 
@@ -267,7 +267,7 @@
                                             // See Options -> getThumbBoundsFn section of documentation for more info
                                             var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
                                                 pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
-                                                rect = thumbnail.getBoundingClientRect(); 
+                                                rect = thumbnail.getBoundingClientRect();
 
                                             return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
                                         }
@@ -277,7 +277,7 @@
                                     // PhotoSwipe opened from URL
                                     if(fromURL) {
                                         if(options.galleryPIDs) {
-                                            // parse real index when custom PIDs are used 
+                                            // parse real index when custom PIDs are used
                                             // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
                                             for(var j = 0; j < items.length; j++) {
                                                 if(items[j].pid == index) {

@@ -2,10 +2,10 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin')}}">
-        <div class="sidebar-brand-icon">
+        {{-- <div class="sidebar-brand-icon">
             <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">Admin</div>
+        </div> --}}
+        <div class="sidebar-brand-text">Admin</div>
     </a>
 
     <!-- Divider -->
@@ -48,14 +48,14 @@
             </div>
         </div>
     </li>
-    
+
     {{-- <!-- Divider -->
     <hr class="sidebar-divider">
     <!-- Heading -->
     <div class="sidebar-heading">
         Produits
     </div> --}}
-    
+
     <!-- Categories -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#categoryCollapse"
@@ -71,7 +71,7 @@
             </div>
         </div>
     </li>
-    
+
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#productCollapse"
             aria-expanded="true" aria-controls="productCollapse">
@@ -101,21 +101,7 @@
             </div>
         </div>
     </li>
-    
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#catalogCollapse" aria-expanded="true"
-            aria-controls="catalogCollapse">
-            <i class="fas fa-file"></i>
-            <span>Catalogues</span>
-        </a>
-        <div id="catalogCollapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Options de Catalogue:</h6>
-                <a class="collapse-item" href="{{route('catalog.index')}}">Catalogues</a>
-                <a class="collapse-item" href="{{route('catalog.create')}}">Ajouter un Catalogue</a>
-            </div>
-        </div>
-    </li>
+
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#testimonialCollapse" aria-expanded="true"
@@ -161,14 +147,14 @@
             </div>
         </div>
     </li>
-    
+
     <li class="nav-item">
         <a class="nav-link" href="{{route('about.edit')}}">
             <i class="fas fa-address-card"></i>
             <span>À Propos</span></a>
     </li>
 
-    {{-- 
+    {{--
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#shippingCollapse"
             aria-expanded="true" aria-controls="shippingCollapse">

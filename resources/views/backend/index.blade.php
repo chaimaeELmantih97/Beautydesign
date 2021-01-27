@@ -61,24 +61,6 @@
           </div>
         </div>
       </div>
-
-      <!--Catalogs-->
-      <div class="col-xl-6 col-md-6 mb-4">
-        <div class="card border-left-danger shadow h-100 py-2">
-          <div class="card-body">
-            <div class="row no-gutters align-items-center">
-              <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Catalogues</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">{{\App\Models\Catalog::countActivePost()}}</div>
-              </div>
-              <div class="col-auto">
-                <i class="fas fa-file fa-2x text-gray-300"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!--Services-->
       <div class="col-xl-6 col-md-6 mb-4">
         <div class="card border-left-danger shadow h-100 py-2">
@@ -156,7 +138,7 @@
           <!-- Card Header - Dropdown -->
           <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-            
+
           </div>
           <!-- Card Body -->
           <div class="card-body">
@@ -166,7 +148,7 @@
           </div>
         </div>
       </div>
-    
+
       <!-- Pie Chart -->
       <div class="col-xl-4 col-lg-5">
         <div class="card shadow mb-4">
@@ -182,7 +164,7 @@
       </div>
     </div> --}}
     <!-- Content Row -->
-    
+
   </div>
 @endsection
 

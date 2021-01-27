@@ -1,77 +1,120 @@
 @extends('frontend.layouts.master')
 
-@section('title','Beauty Design - À Propos de nous')
+@section('title','Beauty Design Design - À Propos de nous')
 
 @section('main-content')
+<style>
+    .zs2 {
+        display: block !important;
+    }
 
-	@php
-		$settings=DB::table('settings')->get();
-	@endphp
+    .zs1 {
+        display: none !important;
+    }
 
-    <!-- start page-title -->
-    <section class="page-title">
+    .hamburger span {
+        background: #ffffff !important;
+    }
+
+    .iconC {
+        color: #ffffff;
+    }
+
+</style>
+@php
+$settings=DB::table('settings')->get();
+@endphp
+@foreach ($settings as $data)
+<header class="header">
+    <aside class="left-side">
+        <ul>
+            <li><a href="{{$data->facebook}}">FACEBOOK</a></li>
+            <li><a href="{{$data->instagram}}">INSTAGRAM</a></li>
+            <li><a href="{{$data->linkedin}}">LINKEDIN</a></li>
+        </ul>
+    </aside>
+    <div class="perspective" id="gl" data-imageOriginal="{{url('images/bg.jpg')}}"
+        data-imageDepth="{{url('images/bg.jpg')}}" data-horizontalThreshold="30" data-verticalThreshold="13">
         <div class="container">
-            <div class="row">
-                <div class="col col-xs-12">
-                    <h2 style="margin-top: 50px">À Propos de Nous</h2>
-                    <ol class="breadcrumb">
-                        <li><a href="{{route('home')}}">Accueil</a></li>
-                        <li>À Propos de Nous</li>
-                    </ol>
-                </div>
-            </div> <!-- end row -->
-        </div> <!-- end container -->
-    </section>        
-	<!-- end page-title -->
-	
-	
-	<!-- start about -->
-	<section class="arkit-about2 section-padding">
-		<div class="container">
-			<div class="row display-flex">
-				<div class="col-lg-12 col-md-12 col-xs-12">
-					<div class="arkit-about-inner">
-						<span>Present dans le marché depuis 2015</span>
-						<h2>{{$about->title}}</h2>
-						<p>
-							{!! html_entity_decode($about->description) !!}
-						</p>
-						<div class="contact-number">
-							<div class="content">
-								<span>Appelez-nous :</span>
-								<h4>@foreach($settings as $data) {{$data->phone}} @endforeach</h4>
-							</div>
-							<div class="icon">
-								<img alt="" class="img-responsive" src="{{asset('frontend/assets/images/about/icon/smartphone.svg')}}">
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--/col-->
-				{{-- <div class="col-lg-7 col-md-6 col-xl-12">
-					<div class="about-img">
-						<img alt="{{$about->photo}}" src="{{$about->photo}}">
-					</div>
-				</div> --}}
-			</div>
-		</div>
-	</section>
-	<!-- end of about -->
+            <div class="tagline"><span></span>
+                <h6>À Propos de Nous</h6>
+            </div>
+            <!-- end tagline -->
+            <h1>Beauty<br>
+                <span>Design</span></h1>
 
-	<!-- start service -->
-	<section class="arkit-service-info section-padding">
-		<div class="container-fluid">
-			<div class="owl-carousel owl-theme service-info-slider">
-				@foreach ($services as $key => $service)
-					<div class="item arkit-service-info-single" data-number="{{ ($key+1) < 10 ? '0'.($key+1) : ($key+1) }}" style="height: 330px">
-						<span class="tag">{{$service->tag}}</span>
-						<h2>{{$service->title}}</h2>
-						<p>{{$service->description}}</p>
-					</div>
-				@endforeach
-			</div>
-		</div>
-	</section>
-	<!-- end of service -->
+            <!-- end slide-btn -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- perspective end  -->
+</header>
+@endforeach
+<!-- end header -->
+<section class="intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 wow fadeIn">
+                {{-- <h6>SMOOTH INTERFACE INTERACTION</h6> --}}
+                <h2 data-text="About">Present dans le marché depuis 2015. </h2>
+            </div>
+            <!-- end col-12 -->
+            <div class="col-lg-5 wow fadeIn">
+                <h4>{{$about->title}}</h4>
+                <img src="{{$about->photo}}}" alt="">
+            </div>
+            <!-- end col-5 -->
+            <div class="col-lg-7 wow fadeIn" data-wow-delay="0.10s">
+                <p>{!! html_entity_decode($about->description) !!}</p>
+            </div>
+            <!-- end col-7 -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</section>
+
+<!-- end works -->
+<section class="work-with-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 wow fadeIn">
+                <h6>Nos Réalisations</h6>
+                <h2>Nos Services</h2>
+            </div>
+        </div>
+        <div class="card-slider">
+            @foreach ($services as $key => $service)
+            <div class="col-lg-12">
+                <div class="card border-0 w-100">
+                    {{-- <img class="card-img-top" src="https://picsum.photos/seed/picsum/200/200" alt="Card image cap"> --}}
+                    @if($service->photo)
+                    <img class="card-img-top" src="{{$service->photo}}" style="height: 200px;">
+                    @else
+                    <img class="card-img-top" src="{{asset('backend/img/thumbnail-default.jpg')}}"
+                        style="height: 200px;">
+                    @endif
+                    <div class="card-body">
+                        {{-- <h5 class="card-title"><em><b>{{$service->title}}</b></em></h5> --}}
+                        @php
+                        // $shortdesc=substr($service->description,0,100);
+                        @endphp
+                        <p>
+                            {{$service->description}}
+                        </p>
+                    </div>
+                    <div
+                        style="background: #202020; width:100%; padding:10px; display:flex; justify-content: space-between">
+                        <a href="#" style="color: #ffffff;"><em><b>{{$service->title}}</b></em></a>
+
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+    <!-- end container -->
+</section>
+<!-- end work-with-us -->
 
 @endsection

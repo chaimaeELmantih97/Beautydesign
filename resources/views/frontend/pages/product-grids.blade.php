@@ -1,210 +1,166 @@
 @extends('frontend.layouts.master')
 
-@section('title','Beauty Design - Liste des Produits')
+@section('title','Beauty Design Design - Liste des Produits')
 
 @section('main-content')
 
-	<!-- start page-title -->
-    <section class="page-title">
+<style>
+    .zs2 {
+        display: block !important;
+    }
+
+    .zs1 {
+        display: none !important;
+    }
+
+    .hamburger span {
+        background: #ffffff !important;
+    }
+
+    .iconC {
+        color: #ffffff;
+    }
+
+</style>
+@php
+$settings=DB::table('settings')->get();
+@endphp
+@php
+$projets=App\Models\Service::paginate(5);
+@endphp
+@foreach ($settings as $data)
+<header class="header">
+    <aside class="left-side">
+        <ul>
+            <li><a href="{{$data->facebook}}">FACEBOOK</a></li>
+            <li><a href="{{$data->instagram}}">Instagram</a></li>
+            <li><a href="{{$data->linkedin}}">Linkedin</a></li>
+        </ul>
+    </aside>
+    <div class="perspective" id="gl" data-imageOriginal="{{url('images/bg.jpg')}}"
+        data-imageDepth="{{url('images/bg.jpg')}}" data-horizontalThreshold="30" data-verticalThreshold="13">
         <div class="container">
-            <div class="row">
-                <div class="col col-xs-12">
-                    <h2 style="margin-top: 50px">Liste des Produits</h2>
-                    <ol class="breadcrumb">
-                        <li><a href="{{route('home')}}">Accueil</a></li>
-                        <li>Liste des Produits</li>
-                    </ol>
-                </div>
-            </div> <!-- end row -->
-        </div> <!-- end container -->
-    </section>        
-	<!-- end page-title -->
-    
-    
-    <!-- start blog-pg-section -->
-    <section class="blog-pg-section section-padding">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col col-md-9 col-md-push-3">
-                    <div class="row">
-                        @if(count($products)>0)
-                            @foreach($products as $product)
-                                <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                                    <div class="item" style="margin-top: 30px">
-                                        <div class="arkit-single-service">
-                                            @php
-                                                $photos = explode(',',$product->photo);
-                                            @endphp
-                                            <img alt="{{$photos[0]}}" class="img-responsive" src="{{$photos[0]}}" style="height: 300px; width: 100%; object-fit: cover;" >
-                                            <div class="content-inner">
-                                                <h3><a href="javascript:">
-                                                    <span>{{$product->title}}</span></a>
-                                                </h3>
-                                                <a class="read-more-btn" href="{{route('product-detail',$product->slug)}}">Savoir Plus <span>+</span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--/item-->
-                                </div>
-                            @endforeach
-                        @else
-                            <h3>Aucun Produit Trouvé!<h3>
-                        @endif
-                    </div>
-                    @if($products instanceof \Illuminate\Pagination\LengthAwarePaginator)
-                        <div class="shop_toolbar t_bottom text-center">
-                            <div class="pagination">
-                                {{$products->appends($_GET)->links()}}
-                            </div>
-                        </div>
-                    @endif
-                </div>
-                <div class="col col-md-3 col-md-pull-9">
-                    <div class="blog-sidebar" style="margin-top: 30px">
-                        <div class="widget search-widget">
-                            <h3>Recherche</h3>
-                            <form method="GET" action="{{route('product.search')}}">
-                                @csrf
-                                <div>
-                                    <input type="text" name="search" class="form-control" placeholder="Rechercher...">
-                                    <button type="submit"><i class="ti-search"></i></button>
-                                </div>
-                            </form>
-                        </div>
-
-                        @php
-                            // $category = new Category();
-                            $menu=App\Models\Category::getAllParentWithChild();
-                        @endphp
-                        @if($menu)
-                            <div class="widget category-widget">
-                                <h3>Categories</h3>
-                                <ul>
-                                    @foreach ($menu as $key => $cat_info)
-                                        <li>
-                                            @if (Request::segment(1) == $cat_info->slug)
-                                                <a href="{{route('product-cat', $cat_info->slug)}}" style="color: #c87941">
-                                                    {{$cat_info->title}}</span>
-                                                </a>
-                                            @else
-                                                <a href="{{route('product-cat', $cat_info->slug)}}">
-                                                    {{$cat_info->title}}</span>
-                                                </a>
-                                            @endif
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-
-                        @if (count($recent_products) > 0)
-                            <div class="widget recent-post-widget">
-                                <h3>Produits récents</h3>
-                                <div class="posts">
-                                    @foreach($recent_products as $product)
-                                        <div class="post">
-                                            @php
-                                                $photos = explode(',',$product->photo);
-                                            @endphp
-                                            <div class="img-holder">
-                                                <img src="{{$photos[0]}}" alt style="height: 80px; width: 80px; object-fit: cover">
-                                            </div>
-                                            <div class="details">
-                                                <h4><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h4>
-                                                <a class="read-more-btn" href="{{route('product-detail',$product->slug)}}">Savoir Plus <span>+</span></a>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        @endif
-                    </div>
+            <div class="tagline"><span></span>
+                <h6>Liste des produits</h6>
+            </div>
+            <!-- end tagline -->
+            <h1>Beauty<br>
+                <span>Design</span></h1>
+            {{-- <div class="slide-btn"> <a href="#">
+                    <div class="lines"> <span></span> <span></span> </div>
+                    <!-- end lines -->
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        x="0px" y="0px" viewBox="0 0 104 104" enable-background="new 0 0 104 104" xml:space="preserve">
+                        <circle class="video-play-circle" fill="none" stroke="#fff" stroke-width="2"
+                            stroke-miterlimit="1" cx="52" cy="52" r="50" />
+                    </svg>
+                    <b>LEARN MORE</b>
+                </a> </div> --}}
+            <!-- end slide-btn -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- perspective end  -->
+</header>
+<!-- end header -->
+@endforeach
+@php
+$bg=['#ece6f4','#ebf8f3','#f4eedf','#e5f2f7','#f5efe8'];
+$i=0;
+@endphp
+<div class="container mt-5">
+    <div class="row float-right">
+            @php
+            // $category = new Category();
+            $menu=App\Models\Category::getAllParentWithChild();
+            @endphp
+            @if($menu)
+            <div class="col-md-6 col-sm-12 col-xs-12  ">
+                <div class="form-group">
+                    <select class="form-control" id="exampleFormControlSelect1" onchange="location = this.value;">
+                        <option value=""> Selectionner une catégorie</option>
+                        @foreach ($menu as $key => $cat_info)
+                        <option value="{{route('product-cat', $cat_info->slug)}}">
+                            {{$cat_info->title}}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
-        </div> <!-- end container -->
-    </section>
-    <!-- end blog-pg-section -->
-    
+            @endif
+            <div class="col-md-6 col-sm-12 col-xs-12  ">
+                <form method="GET" action="{{route('product.search')}}">
+                    @csrf
+                    <div class="input-group rounded mr-5">
+                        <input type="search" name="search" class="form-control rounded" placeholder="Search"
+                            aria-label="Search" aria-describedby="search-addon" />
+                        <span class="input-group-text border-0" id="search-addon"
+                            style="border: none; background:none;">
+                            <i class="fa fa-search"></i>
+                        </span>
+                    </div>
+                </form>
+            </div>
+    </div>
+</div>
+<section class="works">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12 wow fadeIn">
+                <h6>Nos Produits</h6>
+                <h2 data-text="Produits">Liste des Produits</h2>
+            </div>
+            <!-- end col-12 -->
+            <div class="col-12">
+                @foreach ($products as $key=>$produit)
+                @if ($i==(count($bg)-1))
+                @php
+                $i=0;
+                @endphp
+                @endif
+                <div class="project-box wow fadeIn" data-bg="{{$bg[$i]}}">
+                    @php
+                    $i=$i+1;
+                    @endphp
+                    <figure>
+                        @if($produit->photo)
+                        @php
+                            $photos = explode(',',$produit->photo);
+                        @endphp
+                        <a href="{{$photos[0]}}" data-fancybox><img src="{{$photos[0]}}" alt="Image"></a>
+                        @else
+                        <a href="{{asset('backend/img/thumbnail-default.jpg')}}" data-fancybox><img
+                                src="{{asset('backend/img/thumbnail-default.jpg')}}" alt="Image"></a>
+                        @endif
+                    </figure>
+                    <div class="content-box">
+                        <div class="inner"> <small>Produit : </small>
+                            <h3><span style="color: black !important">{{$produit->title}}</span></h3>
+                            <div class="custom-link"> <a href="{{route('product-detail',$produit->slug)}}">
+                                    <div class="lines"> <span></span> <span></span> </div>
+                                    <!-- end lines -->
+                                    <b>Savoir Plus</b>
+                                </a> </div>
+                            <!-- end custom-link -->
+                        </div>
+                        <!-- end inner -->
+                    </div>
+                    <!-- end content-box -->
+                </div>
+                @endforeach
+
+            </div>
+            <!-- end col-12 -->
+
+        </div>
+        <!-- end row -->
+        <div class="row d-flex align-items-center justify-content-center">
+            @if($products instanceof \Illuminate\Pagination\LengthAwarePaginator)
+            {{$products->appends($_GET)->links()}}
+            @endif
+        </div>
+    </div>
+    <!-- end container -->
+</section>
+
 @endsection
-@push('styles')
-<style>
-    .pagination{
-        display:inline-flex;
-    }
-    .filter_button{
-        /* height:20px; */
-        text-align: center;
-        background:#F7941D;
-        padding:8px 16px;
-        margin-top:10px;
-        color: white;
-    }
-</style>
-@endpush
-@push('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-    {{-- <script>
-        $('.cart').click(function(){
-            var quantity=1;
-            var pro_id=$(this).data('id');
-            $.ajax({
-                url:"{{route('add-to-cart')}}",
-                type:"POST",
-                data:{
-                    _token:"{{csrf_token()}}",
-                    quantity:quantity,
-                    pro_id:pro_id
-                },
-                success:function(response){
-                    console.log(response);
-					if(typeof(response)!='object'){
-						response=$.parseJSON(response);
-					}
-					if(response.status){
-						swal('success',response.msg,'success').then(function(){
-							document.location.href=document.location.href;
-						});
-					}
-                    else{
-                        swal('error',response.msg,'error').then(function(){
-							// document.location.href=document.location.href;
-						});
-                    }
-                }
-            })
-        });
-    </script> --}}
-    <script>
-        $(document).ready(function(){
-        /*----------------------------------------------------*/
-        /*  Jquery Ui slider js
-        /*----------------------------------------------------*/
-        if ($("#slider-range").length > 0) {
-            const max_value = parseInt( $("#slider-range").data('max') ) || 500;
-            const min_value = parseInt($("#slider-range").data('min')) || 0;
-            const currency = $("#slider-range").data('currency') || '';
-            let price_range = min_value+'-'+max_value;
-            if($("#price_range").length > 0 && $("#price_range").val()){
-                price_range = $("#price_range").val().trim();
-            }
-            
-            let price = price_range.split('-');
-            $("#slider-range").slider({
-                range: true,
-                min: min_value,
-                max: max_value,
-                values: price,
-                slide: function (event, ui) {
-                    $("#amount").val(currency + ui.values[0] + " -  "+currency+ ui.values[1]);
-                    $("#price_range").val(ui.values[0] + "-" + ui.values[1]);
-                }
-            });
-            }
-        if ($("#amount").length > 0) {
-            const m_currency = $("#slider-range").data('currency') || '';
-            $("#amount").val(m_currency + $("#slider-range").slider("values", 0) +
-                "  -  "+m_currency + $("#slider-range").slider("values", 1));
-            }
-        })
-    </script>
-@endpush

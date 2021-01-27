@@ -10,7 +10,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 :root {
-    --blue: #c87941;
+    --blue: #D6A063;
     --indigo: #6610f2;
     --purple: #6f42c1;
     --pink: #e83e8c;
@@ -23,7 +23,7 @@
     --white: #fff;
     --gray: #858796;
     --gray-dark: #5a5c69;
-    --primary: #c87941;
+    --primary: #D6A063;
     --secondary: #858796;
     --success: #1cc88a;
     --info: #36b9cc;
@@ -172,13 +172,13 @@ sup {
 }
 
 a {
-    color: #c87941;
+    color: #D6A063;
     text-decoration: none;
     background-color: transparent
 }
 
 a:hover {
-    color: #224abe;
+    color: #FF7043;
     text-decoration: underline
 }
 
@@ -2717,29 +2717,29 @@ fieldset:disabled a.btn {
 
 .btn-primary {
     color: #fff;
-    background-color: #c87941;
-    border-color: #c87941
+    background-color: #D6A063;
+    border-color: #D6A063
 }
 
 .btn-primary:hover {
     color: #fff;
-    background-color: #694409;
-    border-color: #694409
+    background-color: #FF7043;
+    border-color: #FF7043
 }
 
 .btn-primary.focus,
 .btn-primary:focus {
     color: #fff;
-    background-color: #694409;
-    border-color: #694409;
+    background-color: #FF7043;
+    border-color: #FF7043;
     box-shadow: 0 0 0 .2rem rgba(105, 136, 228, .5)
 }
 
 .btn-primary.disabled,
 .btn-primary:disabled {
     color: #fff;
-    background-color: #c87941;
-    border-color: #c87941
+    background-color: #D6A063;
+    border-color: #D6A063
 }
 
 .btn-primary:not(:disabled):not(.disabled).active,
@@ -3044,14 +3044,14 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-primary {
-    color: #c87941;
-    border-color: #c87941
+    color: #D6A063;
+    border-color: #D6A063
 }
 
 .btn-outline-primary:hover {
     color: #fff;
-    background-color: #c87941;
-    border-color: #c87941
+    background-color: #D6A063;
+    border-color: #D6A063
 }
 
 .btn-outline-primary.focus,
@@ -3061,7 +3061,7 @@ fieldset:disabled a.btn {
 
 .btn-outline-primary.disabled,
 .btn-outline-primary:disabled {
-    color: #c87941;
+    color: #D6A063;
     background-color: transparent
 }
 
@@ -3069,8 +3069,8 @@ fieldset:disabled a.btn {
 .btn-outline-primary:not(:disabled):not(.disabled):active,
 .show>.btn-outline-primary.dropdown-toggle {
     color: #fff;
-    background-color: #c87941;
-    border-color: #c87941
+    background-color: #D6A063;
+    border-color: #D6A063
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
@@ -3333,12 +3333,12 @@ fieldset:disabled a.btn {
 
 .btn-link {
     font-weight: 400;
-    color: #c87941;
+    color: #D6A063;
     text-decoration: none
 }
 
 .btn-link:hover {
-    color: #224abe;
+    color: #FF7043;
     text-decoration: underline
 }
 
@@ -3644,7 +3644,7 @@ input[type=submit].btn-block {
 .dropdown-item:active {
     color: #fff;
     text-decoration: none;
-    background-color: #c87941
+    background-color: #D6A063
 }
 
 .dropdown-item.disabled,
@@ -4006,8 +4006,8 @@ input[type=submit].btn-block {
 
 .custom-control-input:checked~.custom-control-label::before {
     color: #fff;
-    border-color: #c87941;
-    background-color: #c87941
+    border-color: #D6A063;
+    background-color: #D6A063
 }
 
 .custom-control-input:focus~.custom-control-label::before {
@@ -4073,8 +4073,8 @@ input[type=submit].btn-block {
 }
 
 .custom-checkbox .custom-control-input:indeterminate~.custom-control-label::before {
-    border-color: #c87941;
-    background-color: #c87941
+    border-color: #D6A063;
+    background-color: #D6A063
 }
 
 .custom-checkbox .custom-control-input:indeterminate~.custom-control-label::after {
@@ -4305,7 +4305,7 @@ input[type=submit].btn-block {
     width: 1rem;
     height: 1rem;
     margin-top: -.25rem;
-    background-color: #c87941;
+    background-color: #D6A063;
     border: 0;
     border-radius: 1rem;
     -webkit-transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
@@ -4338,7 +4338,7 @@ input[type=submit].btn-block {
 .custom-range::-moz-range-thumb {
     width: 1rem;
     height: 1rem;
-    background-color: #c87941;
+    background-color: #D6A063;
     border: 0;
     border-radius: 1rem;
     -moz-transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
@@ -4374,7 +4374,7 @@ input[type=submit].btn-block {
     margin-top: 0;
     margin-right: .2rem;
     margin-left: .2rem;
-    background-color: #c87941;
+    background-color: #D6A063;
     border: 0;
     border-radius: 1rem;
     -ms-transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
@@ -4518,7 +4518,7 @@ input[type=submit].btn-block {
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
     color: #fff;
-    background-color: #c87941
+    background-color: #D6A063
 }
 
 .nav-fill .nav-item {
@@ -5269,14 +5269,14 @@ input[type=submit].btn-block {
     padding: .5rem .75rem;
     margin-left: -1px;
     line-height: 1.25;
-    color: #c87941;
+    color: #D6A063;
     background-color: #fff;
     border: 1px solid #dddfeb
 }
 
 .page-link:hover {
     z-index: 2;
-    color: #224abe;
+    color: #FF7043;
     text-decoration: none;
     background-color: #eaecf4;
     border-color: #dddfeb
@@ -5302,8 +5302,8 @@ input[type=submit].btn-block {
 .page-item.active .page-link {
     z-index: 3;
     color: #fff;
-    background-color: #c87941;
-    border-color: #c87941
+    background-color: #D6A063;
+    border-color: #D6A063
 }
 
 .page-item.disabled .page-link {
@@ -5387,7 +5387,7 @@ a.badge:hover {
 
 .badge-primary {
     color: #fff;
-    background-color: #c87941
+    background-color: #D6A063
 }
 
 a.badge-primary:focus,
@@ -5718,7 +5718,7 @@ a.badge-dark:focus {
     color: #fff;
     text-align: center;
     white-space: nowrap;
-    background-color: #c87941;
+    background-color: #D6A063;
     transition: width .6s ease
 }
 
@@ -5809,8 +5809,8 @@ a.badge-dark:focus {
 .list-group-item.active {
     z-index: 2;
     color: #fff;
-    background-color: #c87941;
-    border-color: #c87941
+    background-color: #D6A063;
+    border-color: #D6A063
 }
 
 .list-group-item+.list-group-item {
@@ -7000,7 +7000,7 @@ a.close.disabled {
 }
 
 .bg-primary {
-    background-color: #c87941 !important
+    background-color: #D6A063 !important
 }
 
 a.bg-primary:focus,
@@ -7136,7 +7136,7 @@ button.bg-dark:hover {
 }
 
 .border-primary {
-    border-color: #c87941 !important
+    border-color: #D6A063 !important
 }
 
 .border-secondary {
@@ -10736,12 +10736,12 @@ button.bg-dark:hover {
 }
 
 .text-primary {
-    color: #c87941 !important
+    color: #D6A063 !important
 }
 
 a.text-primary:focus,
 a.text-primary:hover {
-    color: #224abe !important
+    color: #FF7043 !important
 }
 
 .text-secondary {
@@ -11077,8 +11077,8 @@ a:focus {
 }
 
 .bg-gradient-primary {
-    background-color: #c87941;
-    background-image: linear-gradient(180deg, #c87941 10%, #c87941 100%);
+    background-color: #D6A063;
+    background-image: linear-gradient(180deg, #D6A063 10%, #D6A063 100%);
     background-size: cover
 }
 
@@ -11218,11 +11218,11 @@ a:focus {
 }
 
 .border-left-primary {
-    border-left: .25rem solid #c87941 !important
+    border-left: .25rem solid #D6A063 !important
 }
 
 .border-bottom-primary {
-    border-bottom: .25rem solid #c87941 !important
+    border-bottom: .25rem solid #D6A063 !important
 }
 
 .border-left-secondary {
@@ -11408,8 +11408,8 @@ a:focus {
 }
 
 .topbar .dropdown-list .dropdown-header {
-    background-color: #c87941;
-    border: 1px solid #c87941;
+    background-color: #D6A063;
+    border: 1px solid #D6A063;
     padding-top: .75rem;
     padding-bottom: .75rem;
     color: #fff
@@ -11586,7 +11586,7 @@ a:focus {
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-item.active,
 .sidebar .nav-item .collapsing .collapse-inner .collapse-item.active {
-    color: #c87941;
+    color: #D6A063;
     font-weight: 700
 }
 
@@ -12532,7 +12532,7 @@ form.user .btn-user {
     content: attr(data-text);
     position: absolute;
     left: -2px;
-    text-shadow: 1px 0 #c87941;
+    text-shadow: 1px 0 #D6A063;
     top: 0;
     color: #5a5c69;
     background: #f8f9fc;

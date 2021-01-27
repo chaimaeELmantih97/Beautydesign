@@ -1,172 +1,319 @@
 @php
-    $settings=DB::table('settings')->get();
+$brands=App\Models\Brand::all();
+$brands2=App\Models\Brand::limit(8)->get();
 @endphp
+<style>
 
-	<!-- start site-footer -->
-<footer class="site-footer">		
-	@if (request()->segment(1) != 'contact')
-		<div class="upper-footer">
-			<div class="container">
-				<div class="row display-flex">
-					<div class="col-lg-3 col-sm-6 col-sm-6 col-xs-12 order-2">
-						<div class="widget about-widget">
-							<div class="widget-title">
-								<a class="logo" href="{{route('home')}}" style="padding: 20px"><img alt src="@foreach($settings as $data) {{$data->logo}} @endforeach"></a>
-							</div>
-							<ul>
-								<li>
-									<div class="icon">
-										<i class="fa fa-phone"></i>
-										{{-- <img alt="" class="img-responsive" src="{{asset('frontend/assets/images/icon/call.svg')}}"> --}}
-									</div>
-									<div class="content">
-										<p>Appelez-nous:</p>
-										<span style="color: #fff; font-size: 13px">@foreach($settings as $data) {{$data->phone}} @endforeach</span>
-									</div>
-								</li>
-								<li>
-									<div class="icon">
-										<i class="fa fa-paper-plane"></i>
-										{{-- <img alt="" class="img-responsive" src="{{asset('frontend/assets/images/icon/envelope-open.svg')}}"> --}}
-									</div>
-									<div class="content">
-										<p>Email:</p>
-										<span style="color: #fff; font-size: 13px">@foreach($settings as $data) {{$data->email}} @endforeach</span>
-									</div>
-								</li>
-								<li>
-									<div class="icon">
-										<i class="fa fa-map-marker-alt"></i>
-										{{-- <img alt="" class="img-responsive" src="{{asset('frontend/assets/images/icon/gps.svg')}}"> --}}
-									</div>
-									<div class="content">
-										<p>Adresse:</p>
-										<span style="color: #fff; font-size: 13px">@foreach($settings as $data) {{$data->address}} @endforeach</span>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-lg-6 col-sm-12 col-xs-12 order-1">
-						<div class="contact-widget">
-							<div class="display-flex-title">
-								<div class="section-title text-center">
-									<span>Contactez-Nous</span>
-									<h2>Nous sommes toujours prêts à résoudre vos problèmes.</h2>
-								</div>
-							</div>
-							<form class="contact-validation-active" method="post" action="{{route('contact.store')}}">
-								@csrf
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xl-12">
-										<div class="form-group">
-											<input class="form-control" id="name" name="name" placeholder="Nom*" type="text">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xl-12">
-										<div class="form-group">
-											<input class="form-control" id="email" name="email" placeholder="Email*" type="email">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xl-12">
-										<div class="form-group">
-											<input class="form-control" id="phone" name="phone" placeholder="Téléphone*" type="text">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xl-12">
-										<div class="form-group">
-											<input class="form-control" id="subject" name="subject" placeholder="Objet*" type="text">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-xs-12">
-										<div class="form-group">
-											<div class="fullwidth">
-												<textarea class="form-control" id="note" name="message" placeholder="Message..."></textarea>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-lg-6 col-lg-offset-3">
-										<div class="form-group">
-											<div class="submit-area">
-												<button class="submit-btn" type="submit">
-													Envoyer le message
-												</button>
-												<div id="loader">
-													<i class="ti-reload"></i>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="clearfix error-handling-messages">
-									<div id="success">Merci</div>
-									<div id="error">
-										Une erreur s'est produite lors de l'envoi d'email. Veuillez réessayer plus tard.
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-					<div class="col-lg-3 col-sm-6 col-sm-6 col-xs-12 order-3">
-						<div class="widget link-widget">
-							<div class="widget-title">
-								<h3>Beauty Design</h3>
-							</div>
-							<ul>
-								<li><a href="{{route('home')}}">Accueil</a></li>
-								<li><a href="{{route('about-us')}}">À Propos</a></li>
-								<li><a href="{{route('product-grids')}}">Produits</a></li>
-								<li><a href="{{route('blog')}}">Blog</a></li>
-								<li><a href="{{route('promotions')}}">Promotions</a></li>
-								<li><a href="{{route('contact')}}">Contact</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- end container -->
-		</div>
-		
-	@endif
-		
-	<div class="lower-footer">
-		<div class="container">
-			<div class="row display-flex">
-				<div class="col-md-6 col-sm-6 col-xs-12">
-					<p class="copyright"><a href="http://feen-tech.com" style="color: #fff">FeenTech</a> Corporation © 2020</p>
-				</div><!-- /col -->
-				<div class="col-md-6 col-sm-6 col-xs-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="@foreach($settings as $data) {{$data->facebook}} @endforeach"><i class="ti-facebook"></i></a></li>
-							<li><a href="@foreach($settings as $data) {{$data->linkedin}} @endforeach"><i class="ti-linkedin"></i></a></li>
-							<li><a href="@foreach($settings as $data) {{$data->instagram}} @endforeach"><i class="ti-instagram"></i></a></li>
-						</ul>
-					</div>
-				</div><!-- /col -->
-			</div>
-		</div>
-	</div>
+.owl-dots {
+text-align: center;
+margin-top: 4%;
+}
+.owl-dot {
+display: inline-block;
+height: 15px !important;
+width: 15px !important;
+background-color: #878787 !important;
+opacity: 0.8;
+border-radius: 50%;
+margin: 0 5px;
+}
+.owl-dot.active {
+background-color: #000 !important;
+}
+
+.gtco-testimonials .owl-dots span{
+    display:none !important;
+}
+</style>
+<section class="clients">
+    <div class="container">
+        <div class="row text-center" style="text-align: center">
+            {{-- <div class="col-lg-5 wow fadeIn">
+                <h2>Nos clients</h2>
+                <h4>nous avons travaillé avec des clients spéciaux:</h4>
+                @if (count($brands)>8)
+                <div class="custom-link wow fadeIn"> <a href="#">
+                        <div class="lines"> <span></span> <span></span> </div>
+                        <!-- end lines -->
+                        <b>Savoir plus</b>
+                    </a> </div>
+                @endif
+
+                <!-- end custom-link -->
+                <!-- end custom-link -->
+            </div>
+            <div class="col-lg-7 wow fadeIn" data-wow-delay="0.10s">
+                <ul>
+                    @foreach ($brands2 as $key=>$brand)
+                    <li><img src="{{$brand->photo}}" style="height: 100px;" alt="Image"><small>{{$brand->title}}</small>
+                    </li>
+                    @endforeach
+                </ul>
+            </div> --}}
+            <div style="display: flex; align-items: center; justify-content: center;width: 100%;">
+                <h3 class="mb-5" style="text-align: center">Clients avec lesquels nous sommes fiers de travailler :</h3>
+            </div>
+            <div class="brand-carousel section-padding owl-carousel">
+                @foreach ($brands2 as $key=>$brand)
+                <div class="single-logo">
+                    <img src="{{$brand->photo}}" style="height: 150px; width:170px; object-fit: contain; padding:7%" alt="">
+                </div>
+                @endforeach
+            </div>
+
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</section>
+<!-- end clients -->
+
+@php
+$settings=DB::table('settings')->get();
+@endphp
+@foreach ($settings as $data)
+<footer class="footer">
+    <div class="footer-quote wow fadeIn">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    {{-- <img src="{{$data->logo}}" alt="Image"> --}}
+                    <h1 style="font-family: 'Yellowtail', cursive; color:#ffffff ;">Beauty Design</h1>
+                    {{-- <h3>Let's create the flexible website for your business ?</h3> --}}
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end footer-quote -->
+    <div class="footer-contact wow fadeIn">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <address>
+                        {{$data->address}}
+                    </address>
+                </div>
+                <!-- end col-4 -->
+                <div class="col-md-4">
+                    <address>
+                        <a href="tel:{{$data->phone}}"> {{$data->phone}}</a>
+                    </address>
+                </div>
+                <!-- end col-4 -->
+                <div class="col-md-3">
+                    <address>
+                        <a href="mailto:{{$data->email}}">{{$data->email}}</a>
+                    </address>
+                </div>
+                <!-- end col-2 -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end footer-contact -->
+    <div class="footer-bottom wow fadeIn">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h5>CONNECTER AVEC Beauty Design </h5>
+                    <ul>
+                        <li><a href="{{$data->instagram}}">Instagram</a></li>
+                        <li><a href="{{$data->facebook}}">Facebook</a></li>
+                        <li><a href="{{$data->linkedin}}">Linkedin</a></li>
+                    </ul>
+                </div>
+                <!-- end col-8 -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end footer-bottom -->
 </footer>
-<!-- end site-footer -->
+@endforeach
+<!-- end footer -->
 
-<!-- PhotoSwipe -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe.min.js" integrity="sha512-2R4VJGamBudpzC1NTaSkusXP7QkiUYvEKhpJAxeVCqLDsgW4OqtzorZGpulE3eEA7p++U0ZYmqBwO3m+R2hRjA==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe-ui-default.min.js" integrity="sha512-SxO0cwfxj/QhgX1SgpmUr0U2l5304ezGVhc0AO2YwOQ/C8O67ynyTorMKGjVv1fJnPQgjdxRz6x70MY9r0sKtQ==" crossorigin="anonymous"></script>
+<!-- JS FILES -->
+<script src="{{url('frontend/js/jquery.min.js')}}"></script>
+<script src="{{url('frontend/js/bootstrap.min.js')}}"></script>
+<script src="{{url('frontend/js/swiper.min.js')}}"></script>
+<script src="{{url('frontend/js/tilt.jquery.js')}}"></script>
+<script src="{{url('frontend/js/wow.min.js')}}"></script>
+<script src="{{url('frontend/js/odometer.min.js')}}"></script>
+<script src="{{url('frontend/js/jquery.typewriter.js')}}"></script>
+<script src="{{url('frontend/js/fancybox.min.js')}}"></script>
+<script src="{{url('frontend/js/app.js')}}"></script>
+<script src="{{url('frontend/js/scripts.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        speed: 1000,
+        slidesPerView: 2,
+        loop: true,
+        keyboard: {
+            enabled: true,
+            onlyInViewport: false,
+        },
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        breakpoints: {
+            560: {
+                slidesPerView: 1,
+            },
+        },
+    });
+    // var bgs=['https://images.pexels.com/photos/3637943/pexels-photo-3637943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    // 'https://images.pexels.com/photos/1437493/pexels-photo-1437493.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    // 'https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    // ];
+    swiper.on('transitionStart', function () {
+        //     var x = Math.floor(Math.random() * (2 + 1));
+        //   $('.header2').css('background-image', 'url("' + bgs[x] + '")');
+        if ($(window).width() >= '560') {
+            $('.swiper-slide').removeClass('slide-active');
+            $(swiper.slides[swiper.activeIndex + 1]).addClass('slide-active');
+        } else {
+            $('.swiper-slide').addClass('slide-active');
+        }
+    });
 
-<!-- All JavaScript files
-================================================== -->
-<script src="{{asset('frontend/assets/js/jquery.min.js')}}"></script>
-<script src="{{asset('frontend/assets/js/bootstrap.min.js')}}"></script>
+    window.onload = function () {
+        if ($(window).width() < '560') {
+            $('.swiper-slide').addClass('slide-active');
+        }
+    }
+    window.onresize = function () {
+        if ($(window).width() < '560') {
+            $('.swiper-slide').addClass('slide-active');
+        } else {
+            $('.swiper-slide').removeClass('slide-active');
+            $(swiper.slides[swiper.activeIndex + 1]).addClass('slide-active');
+        }
+    }
 
-<!-- Plugins for this template -->
-<script src="{{asset('frontend/assets/js/jquery-plugin-collection.js')}}"></script>
+</script>
+<script>
+    (function () {
+        "use strict";
+        var carousels = function () {
+            $(".owl-carousel1").owlCarousel({
+                loop: true,
+                center: true,
+                margin: 0,
+                responsiveClass: true,
+                nav: false,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: false
+                    },
+                    680: {
+                        items: 2,
+                        nav: false,
+                        loop: false
+                    },
+                    1000: {
+                        items: 3,
+                        nav: true
+                    }
+                }
+            });
+        };
 
-<!-- Custom script for this template -->
-<script src="{{asset('frontend/assets/js/script.js')}}"></script>
+        (function ($) {
+            carousels();
+        })(jQuery);
+    })();
+
+</script>
+
+<script>
+    $(document).ready(function ($) {
+        $('.card-slider').slick({
+            dots: true,
+            infinite: true,
+            speed: 500,
+            stagePadding: 50,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: false,
+            autoplaySpeed: 2000,
+            arrows: true,
+            responsive: [{
+                    breakpoint: 800,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 500,
+                    settings: {
+                        arrows: false,
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+    });
+
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        $('.client-single').on('click', function (event) {
+            event.preventDefault();
+
+            var active = $(this).hasClass('active');
+
+            var parent = $(this).parents('.testi-wrap');
+
+            if (!active) {
+                var activeBlock = parent.find('.client-single.active');
+
+                var currentPos = $(this).attr('data-position');
+
+                var newPos = activeBlock.attr('data-position');
+
+                activeBlock.removeClass('active').removeClass(newPos).addClass('inactive').addClass(
+                    currentPos);
+                activeBlock.attr('data-position', currentPos);
+
+                $(this).addClass('active').removeClass('inactive').removeClass(currentPos).addClass(
+                    newPos);
+                $(this).attr('data-position', newPos);
+
+            }
+        });
+
+    }(jQuery));
+
+</script>
+
+<script>
+    $('.brand-carousel').owlCarousel({
+  loop:true,
+  margin:20,
+  autoplay:true,
+  responsive:{
+    0:{
+      items:1
+    },
+    600:{
+      items:3
+    },
+    1000:{
+      items:5
+    }
+  }
+})
+
+</script>

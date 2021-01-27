@@ -3,30 +3,38 @@
 <head>
 	@include('frontend.layouts.head')
 </head>
-<body class="js">
-	
-<!-- start page-wrapper -->
-<div class="page-wrapper">
+<body>
 
-    <!-- start preloader -->
-	<div class="preloader">
-        <div class="spinner">
-            <div class="bounce1"></div>
-            <div class="bounce2"></div>
-            <div class="bounce3"></div>
+
+    <div class="preloader">
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="inner" data-tilt data-tilt-perspective="2000">
+          <figure class="fadeInUp animated"> <img src="{{url('frontend/images/loader.gif')}}" alt="Image"> </figure>
+          <span class="typewriter" id="typewriter"></span>
         </div>
-    </div>
-    <!-- end preloader -->
-	
+        <!-- end inner -->
+      </div>
+      <!-- end preloader -->
+      <div class="transition-overlay">
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+      </div>
+      <!-- end transition-overlay -->
+
 	@include('frontend.layouts.notification')
 	<!-- Header -->
 	@include('frontend.layouts.header')
 	<!--/ End Header -->
 	@yield('main-content')
-	
+
 	@include('frontend.layouts.footer')
 
-</div>
+
 
 </body>
 </html>

@@ -1,287 +1,440 @@
 @extends('frontend.layouts.master')
-@section('title','Beauty Design - Accueil')
+@section('title','Beauty Design Design - Accueil')
 @section('main-content')
+<style>
 
+.gtco-testimonials {
+  position: relative;
+  margin-top: 30px;
+}
+@media (max-width: 767px) {
+  .gtco-testimonials {
+    margin-top: 20px;
+  }
+}
+.gtco-testimonials h2 {
+  font-size: 30px;
+  text-align: center;
+  color: #333333;
+  margin-bottom: 50px;
+}
+.gtco-testimonials .owl-stage-outer {
+  padding: 30px 0;
+}
+.gtco-testimonials .owl-nav {
+  display: none;
+}
+.gtco-testimonials .owl-dots {
+  text-align: center;
+}
+.gtco-testimonials .owl-dots span {
+  position: relative;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: block;
+  background: #fff;
+  border: 2px solid #01b0f8;
+  margin: 0 5px;
+}
+.gtco-testimonials .owl-dots .active {
+  box-shadow: none;
+}
+.gtco-testimonials .owl-dots .active span {
+  background: #01b0f8;
+  box-shadow: none;
+  height: 12px;
+  width: 12px;
+  margin-bottom: -1px;
+}
+.gtco-testimonials .card {
+  background: #fff;
+  box-shadow: 0 8px 30px -7px #c9dff0;
+  margin: 0 20px;
+  padding: 0 10px;
+  border-radius: 20px;
+  border: 0;
+}
+.gtco-testimonials .card .card-img-top {
+  max-width: 100px;
+  border-radius: 50%;
+  margin: 15px auto 0;
+  box-shadow: 0 8px 20px -4px #e3eeb58c;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+.gtco-testimonials .card h5 {
+  color: #D6A063;
+  font-size: 21px;
+  line-height: 1.3;
+}
+.gtco-testimonials .card h5 span {
+  font-size: 18px;
+  color: #666666;
+}
+.gtco-testimonials .card p {
+  font-size: 18px;
+  color: #555;
+  padding-bottom: 15px;
+}
+.gtco-testimonials .active {
+  opacity: 0.5;
+  transition: all 0.3s;
+}
+.gtco-testimonials .center {
+  opacity: 1;
+}
+.gtco-testimonials .center h5 {
+  font-size: 24px;
+}
+.gtco-testimonials .center h5 span {
+  font-size: 20px;
+}
+.gtco-testimonials .center .card-img-top {
+  max-width: 100%;
+  height: 120px;
+  width: 120px;
+  object-fit: cover;
+}
+    .header1 {
+        display: none !important;
+    }
+
+    .zs2 {
+        display: none;
+    }
+
+    .iconC {
+        color: #1D1E22;
+    }
+
+    .teamImg{
+        height: 200px;
+        object-fit:cover;
+    }
+    @media only screen and (max-width: 768px) {
+        .header1 {
+            display: block !important;
+        }
+
+        .header2 {
+            display: none !important;
+        }
+
+        .header3 {
+            display: none !important;
+        }
+
+        .zs1 {
+            display: none !important;
+        }
+
+        .zs2 {
+            display: block !important;
+        }
+
+        .hamburger span {
+            background: #ffffff !important;
+        }
+        .teamImg{
+        height: 300px;
+        object-fit:cover;
+       }
+    }
+    .spanmenu{
+        background: #ffffff !important;
+    }
+</style>
 @php
-    $settings=DB::table('settings')->get();
+$settings=DB::table('settings')->get();
 @endphp
-
-<!-- start of hero -->
-<section class="arkit-hero-slider hero-slider hero-style-1" style="height: 100vh;">
+<header class="header header1">
     @if(count($banners)>0)
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                @foreach($banners as $key=>$banner)
-                    <div class="swiper-slide">
-                        <div class="slide-inner slide-bg-image dark-overlay" data-background="{{$banner->photo}}">
-                            <div class="container">
-                                <div class="slide-title" data-swiper-parallax="400">
-                                    <span>Depuis 2015</span>
-                                    <h2 style="color: {{$banner->title_color}}">{{$banner->title}}</h2>
-                                    <p style="color: {{$banner->description_color}}">{{$banner->description}}</p>
-                                </div>
-                                <div class="slide-btns" data-swiper-parallax="500">
-                                    <a class="theme-btn" href="{{route('product-grids')}}">Nos Produits</a>
-                                </div>
-                            </div>
+    <div class="swiper-slider">
+        <div class="swiper-wrapper">
+            @foreach($banners as $key=>$banner)
+            <div class="swiper-slide" data-tilt data-tilt-max="5" data-tilt-speed="500" data-tilt-perspective="1500">
+                <div class="slide-inner bg-image" data-background="{{$banner->photo}}"
+                    style="width: 100vw;height: 100vh;background-size: cover;">
+                    <div class="container">
+                        <div class="tagline"><span>{{$key+1}}</span>
+                            <h6 style="color: {{$banner->description_color}} !important;">{{$banner->title}}</h6>
                         </div>
-                        <!-- end slide-inner -->
+                        <!-- end tagline -->
+                        <h1 style="color: {{$banner->description_color}} !important;"><br>
+                            <span
+                                style="-webkit-text-stroke-color:{{$banner->description_color}} !important;">{{$banner->description}}</span>
+                        </h1>
+                        <div class="slide-btn">
+                            <a href="{{route('product-lists')}}">
+                                <div class="lines"> <span></span> <span></span> </div>
+                                <!-- end lines -->
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 104 104"
+                                    enable-background="new 0 0 104 104" xml:space="preserve">
+                                    <circle class="video-play-circle" fill="none" stroke="#fff" stroke-width="2"
+                                        stroke-miterlimit="1" cx="52" cy="52" r="50" />
+                                </svg>
+                                <b>Voir Les Produits</b>
+                            </a> </div>
+                        <!-- end slide-btn -->
                     </div>
-                    <!-- end swiper-slide -->
-                @endforeach
-            </div>
-            <!-- end swiper-wrapper -->
-
-            <!-- swipper controls -->
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-    @endif
-</section>
-<!-- end of hero slider -->
-
-<!-- start about -->
-<section class="arkit-about section-padding">
-    <div class="container">
-        <div class="row display-flex">
-            <div class="col-lg-5 col-md-6 col-xs-12">
-                <div class="arkit-about-inner">
-                    <span>Present dans le marché depuis 2015</span>
-                    <h2>{{$about->title}}</h2>
-                    <p>
-                        {{$about->summary}}
-                    </p>
-                    <p>
-                        <div class="slide-btns" data-swiper-parallax="500">
-                            <a class="theme-btn" href="{{route('about-us')}}">Savoir Plus</a>
-                        </div>
-                    </p>
-                    <div class="contact-number">
-                        <div class="content">
-                            <span>Appelez-nous :</span>
-                            <h4>@foreach($settings as $data) {{$data->phone}} @endforeach</h4>
-                        </div>
-                        <div class="icon">
-                            <img alt="" class="img-responsive" src="{{asset('frontend/assets/images/about/icon/smartphone.svg')}}">
-                        </div>
-                    </div>
+                    <!-- end container -->
                 </div>
+                <!-- end slide-inner -->
             </div>
-            <!--/col-->
-            <div class="col-lg-7 col-md-6 col-xl-12">
-                <div class="about-img">
-                    <img alt="{{$about->photo}}" src="{{$about->photo}}">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- end of about -->
-
-<!-- start service -->
-<section class="arkit-service-info section-padding">
-    <div class="container-fluid">
-        <div class="owl-carousel owl-theme service-info-slider">
-            @foreach ($services as $key => $service)
-                <div class="item arkit-service-info-single" data-number="{{ ($key+1) < 10 ? '0'.($key+1) : ($key+1) }}" style="height: 330px">
-                    <span class="tag">{{$service->tag}}</span>
-                    <h2>{{$service->title}}</h2>
-                    <p>{{$service->description}}</p>
-                </div>
             @endforeach
         </div>
+        <!-- end swiper-wrapper -->
+        <div class="swiper-pagination"></div>
+        <!-- end swiper-pagination -->
+        <div class="swiper-fraction"></div>
+        <!-- end swiper-fraction -->
     </div>
-</section>
-<!-- end of service -->
+    <!-- end swiper-slider -->
+    @endif
+</header>
 
-<!-- start Service -->
-<section class="arkit-service section-padding">
-    <div class="container">
-        <div class="arkit-service-top">
-            <div class="row display-flex">
-                <div class="col-lg-12 text-center">
-                    <div class="section-title">
-                        <h2>Les Métiers de <span>Beauty Design<span>.</h2>
+<!-- end navbar -->
+<header class="header header2"
+    style="height: 100vh; width: 100vw; background-repeat: no-repeat !important; background-position: center !important; background-image: url('/images/bgheader3.jpg'); background-size: cover !important;">
+</header>
+<!-- end header -->
+
+<section class="header3" style="margin-top: -100vh;">
+    @if(count($banners)>0)
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            @foreach($banners as $key=>$banner)
+            <div class="swiper-slide" id="slide-{{$key}}">
+                <div class="slide-inner" style="position: relative;">
+                    <img src="{{$banner->photo}}">
+                    <div
+                        style="position: absolute; bottom: 0; left: 0; background-color: #fff; width: 100%; padding: 20px; text-align: center;">
+                        <h4>{{$banner->title}}</h4>
+                        <p>{{$banner->description}}</p>
                     </div>
                 </div>
-                {{-- <div class="col-lg-5 col-lg-offset-1 col-md-6 col-xs-12">
-                    <div class="service-note">
-                        <p>Compliment favourable connection dispatched terminated esteem powerful excuse remov eirure dolor
-                            <a href="javascript:">inner reprehenderit voluptate velit esse cillum dolore eugiat</a>.
+            </div>
+            @endforeach
+        </div>
+        <!-- Add Pagination -->
+    </div>
+    @endif
+    <!-- end swiper-slider -->
+</section>
+
+<!-- section 2 -->
+<section  style="background-color: #f7e6d567">
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card border-0" style="height:350px; border: none !important; border-radius: none; ">
+                    <img class="card-img" style="height: 100%;"
+                        src="https://images.pexels.com/photos/1005638/pexels-photo-1005638.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                        alt="Bologna">
+                    <div class="card-img-overlay text-white  d-flex flex-column justify-content-center"
+                        style="background-color: rgba(24, 26, 19, 0.473); text-align:center;">
+                        <h2 class="card-title">Catalogue Rayonnage </h2>
+                        <div style="width: 100%; display: flex; align-items: center; justify-content: center;">
+                            <a href="/catalogueR.pdf" target="_blanck" class="btn btn-outline-light align-center"> <i class="fa fa-download download-btn"></i> Voir Le catalogue</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-0" style="height:350px; border: none !important; border-radius: none;">
+                    <img class="card-img" style="height: 100%;"
+                        src="https://images.pexels.com/photos/273671/pexels-photo-273671.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                        alt="Bologna">
+                    <div class="card-img-overlay text-white  d-flex flex-column justify-content-center"
+                        style="background-color: rgba(14, 14, 14, 0.534); text-align:center;">
+                        <h2 class="card-title">Catalogue Mobilier de Bureau .</h2>
+                        <div style="width: 100%; display: flex; align-items: center; justify-content: center;">
+                            <a href="/catalogueM.pdf" target="_blanck" class="btn btn-outline-light align-center"><i class="fa fa-download download-btn"></i> Voir le catalogue</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8" style="height: 100%;">
+
+                <div class="row ">
+                    <div class="col-md-12 mt-2" style="">
+                        <h5><b><em>Present dans le marché depuis 2015 .</em></b></h5>
+                        <h3 style="color: #D6A063"> <b>Beauty Design</b> </h3>
+                        <p style="text-align:justify; text-justify: inter-word;">
+                            {!! html_entity_decode($about->summary) !!}
                         </p>
                     </div>
-                </div> --}}
-            </div>
-        </div><!-- /Row -->
-        <div class="row">
-            <div class="col-12">
-                <div class="owl-carousel owl-theme service-info-slider">
-                    @foreach ($category_lists as $category)
-                        <div class="item">
-                            <div class="arkit-single-service">
-                                <img alt="{{$category->photo}}" class="img-responsive" src="{{$category->photo}}" style="height: 300px; width: 100%; object-fit: cover;">
-                                <div class="content-inner">
-                                    <h3><a href="{{route('product-cat', $category->slug)}}">
-                                        {{-- <img alt="" class="img-responsive home-icon" src="{{asset('frontend/assets/images/icon/home.svg')}}"> --}}
-                                        <span>{{$category->title}}</span></a>
-                                    </h3>
-                                    {{-- <p>Compliment favourable connection disa inner reprehenderit eugiat.</p> --}}
-                                    <a class="read-more-btn" href="{{route('product-cat', $category->slug)}}">SAVOIR PLUS <span>+</span></a>
-                                </div>
+                    {{-- <div class="col-md-5" >
+                        <div class="card border-0 "
+                            style=" border: none !important; border-radius: none; width: 100%; height:100%; background-color: royalblue;">
+                            <img class="card-img" style=" width: 100%; height:100%; object-fit: cover;"
+                                src="{{$about->photo}}" alt="Bologna">
+                            <div class="card-img-overlay text-white  d-flex flex-column justify-content-center"
+                                style="background-color: rgba(50, 54, 16, 0.733); text-align:center;">
+                                <h2 class="card-title">À PROPOS DE NOUS.</h2>
                             </div>
                         </div>
-                        <!--/item-->
-                    @endforeach
+                    </div> --}}
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- end of Service -->
-
-@if (count($catalogs) != 0)
-    <!-- start Status -->
-    <section class="arkit-status section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-xl-12">
-                    <div class="row">
-                        @foreach ($catalogs as $key => $catalog)
-                            @if (count($catalogs) > 2 && count($catalogs)%2 == 0)
-                                <div class="col-lg-6 col-md-6 col-xs-12">
-                            @elseif (count($catalogs) > 2 && count($catalogs)%2 != 0)
-                                @if ($key == (count($catalogs)-1))
-                                    <div class="col-lg-12">
-                                @else
-                                    <div class="col-lg-6 col-md-6 col-xs-12">
-                                @endif
-                            @else
-                                <div class="col-lg-12">
-                            @endif
-                                <a href="{{$catalog->file}}" target="_blank" class="single-status">
-                                    <div class="icon">
-                                        <i class="fa fa-file-pdf download-btn" style="font-size: 50px;"></i>
+                <div class="row mt-2" style="height: 60%;">
+                    <div class="col-md-12">
+                        <div class="item" style="width: 100%; height:100%;">
+                            <div class="card border-0"
+                                style="height:420px; border: none !important; border-radius: none;">
+                                <img class="card-img" style="height: 100%; width:100%" src="https://images.pexels.com/photos/245240/pexels-photo-245240.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                                    alt="Bologna">
+                                <div class="card-img-overlay text-white  d-flex flex-column justify-content-center"
+                                    style="background-color: rgba(14, 14, 14, 0.651); text-align:center;">
+                                    <h4 class="card-title">N’hésitez pas à nous contacter pour échanger
+                                        au sujet de l’aménagement de votre espace professionnel ou Vos Dépôts de Stockage.</h4>
+                                    <div
+                                        style="width: 100%; display: flex; align-items: center; justify-content: center;">
+                                        <a href="{{route('contact')}}" class="btn btn-outline-light align-center">Contactez nous</a>
                                     </div>
-                                    <h3 style="line-height: 0.7">
-                                        <span style="font-size: 30px;">{{$catalog->title}}</span>
-                                    </h3>
-                                    <p>
-                                        <i class="fas fa-download download-btn"></i><span class="download-btn"> Télécharger </span>
-                                    </p>
-                                </a>
-                            </div><!--/col-->
-                        @endforeach
-                    </div><!--/Row-->
-                </div><!--/Col-->
-            </div><!--/Row-->
-        </div><!--/container-->
-        <div class="status-note">
-            <h3>N’hésitez pas à nous contacter pour échanger au sujet de l’aménagement de votre espace professionnel ou Vos Dépôts de Stockage.</h3>
-            <div class="bottom">
-                <a class="read-more-btn" href="{{route('contact')}}">CONTACT US <span>+</span></a>
-                <div class="icon">
-                    <img alt="" class="img-responsive" src="{{asset('frontend/assets/images/status/shelves.svg')}}" style="height: 50px; object-fit: contain">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end of Status -->
-@endif
-
-@if (count($testimonials) != 0)
-    <!-- start testimonial -->
-    <section class="testimonial section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="testimonial-inner">
-                        <div class="row">
-                            <div class="col-lg-9">
-                                <div class="section-title">
-                                    <span>Clients Satisfaits</span>
-                                    <h2>Nous fournissons toujours les meilleurs services. Ce que <span> disent les clients satisfaits de Beauty Design</span>.
-                                    </h2>
                                 </div>
                             </div>
-                        </div>
-                        <div class="owl-carousel owl-theme testimonial-slider">
-                            @foreach ($testimonials as $testimonial)
-                                <div class="item">
-                                    <div class="single-testimonial">
-                                        <div class="info">
-                                            <img alt="{{$testimonial->photo}}" class="img-responsive" src="{{$testimonial->photo}}">
-                                            <h4>{{$testimonial->name}}</h4>
-                                            <p>{{$testimonial->job}}</p>
-                                        </div>
-                                        <div class="feedback">
-                                            <span class="quote"><img alt="" class="img-responsive" src="{{asset('frontend/assets/images/testimonials/quote.svg')}}" style="filter: hue-rotate(120deg)"></span>
-                                            <p>
-                                                {{$testimonial->description}}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div><!-- /item -->
-                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- end of testimonial -->
-@endif
-
-<!-- stsrt client -->
-<section class="client">
-    <div class="owl-carousel owl-theme clents-slider">
-        @foreach ($brands as $brand)
-            <div class="item">
-                <div class="single-client">
-                    <img alt="{{$brand->photo}}" class="img-responsive" src="{{$brand->photo}}" style="object-fit: contain">
-                </div>
-            </div><!--/item-->    
-        @endforeach
     </div>
 </section>
-<!-- end of client -->
 
-
-<!-- start blog -->
-<section class="blog section-padding">
+<!-- end intro -->
+<section class="process">
     <div class="container">
-        <div class="row display-flex-title">
-            <div class="col-lg-6">
-                <div class="section-title text-center">
-                    <span>Dernières publications</span>
-                    <h2>Nous sommes prêts à partager nos conseils et notre expérience.</h2>
+        <div class="row no-gutters">
+            <div class="col-12 wow fadeIn">
+                <h6>Les Métiers de Beauty Design.</h6>
+                <h2 data-text="Métiers">CE QUE NOUS FAISONS</h2>
+            </div>
+            <!-- end col-12 -->
+            <div class="col-md-4 wow fadeIn" data-wow-delay="0s"> <span style="color: black !important">01</span>
+                <figure> <img src="{{url('images/B.svg')}}" alt="Image">
+                    <figcaption>
+                        <h5>Mobilier de Bureau</h5>
+                    </figcaption>
+                </figure>
+            </div>
+            <!-- end col-3 -->
+            <div class="col-md-4 wow fadeIn" data-wow-delay="0.05s"> <span style="color: black !important">02</span>
+                <figure> <img src="{{url('images/R.svg')}}" alt="Image">
+                    <figcaption>
+                        <h5>Rayonnage</h5>
+                    </figcaption>
+                </figure>
+            </div>
+            <!-- end col-3 -->
+            <div class="col-md-4 wow fadeIn" data-wow-delay="0.10s"> <span style="color: black !important">03</span>
+                <figure> <img src="{{url('images/F.svg')}}" alt="Image">
+                    <figcaption>
+                        <h5>Siege et Fauteuil</h5>
+                    </figcaption>
+                </figure>
+            </div>
+            <!-- end col-3 -->
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</section>
+
+<!-- end works -->
+<section class="work-with-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 wow fadeIn">
+                <h6>Nos Réalisations</h6>
+                <h2>Nos Services</h2>
+            </div>
+        </div>
+        <div class="card-slider">
+            @foreach ($services as $key => $service)
+            <div class="col-lg-12">
+                <div class="card border-0 w-100">
+                    {{-- <img class="card-img-top" src="https://picsum.photos/seed/picsum/200/200" alt="Card image cap"> --}}
+                    @if($service->photo)
+                    <img class="card-img-top" src="{{$service->photo}}" style="height: 200px;">
+                    @else
+                    <img class="card-img-top" src="{{asset('backend/img/thumbnail-default.jpg')}}"
+                        style="height: 200px;">
+                    @endif
+                    <div class="card-body">
+                        {{-- <h5 class="card-title"><em><b>{{$service->title}}</b></em></h5> --}}
+                        @php
+                        // $shortdesc=substr($service->description,0,100);
+                        @endphp
+                        <p>
+                            {{$service->description}}
+                        </p>
+                    </div>
+                    <div
+                        style="background: #202020; width:100%; padding:10px; display:flex; justify-content: space-between">
+                        <a href="#" style="color: #ffffff;"><em><b>{{$service->title}}</b></em></a>
+
+                    </div>
                 </div>
             </div>
-        </div><!--/row-->
-        <div class="row">
-            @foreach ($posts as $post)
-                <div class="col-sm-6 col-xs-12">
-                    <div class="single-blog">
-                        <div class="row display-flex">
-                            <div class="col-sm-6">
-                                <img alt="{{$post->photo}}" class="img-responsive" src="{{$post->photo}}" style="height: 250px; object-fit: cover">
-                            </div>
-                            <div class="col-sm-6">
-                                @php
-                                    setlocale(LC_TIME,'fr_FR.UTF8', 'fr.UTF8', 'fr_FR.UTF-8', 'fr.UTF-8');
-                                    $date = strftime('Le %d %B, %Y', strtotime($post->created_at));
-                                @endphp
-                                <span class="date">{{$date}}</span>
-                                <h3><a href="{{route('blog.detail',$post->slug)}}">{{$post->title}}</a></h3>
-                                <a class="read-more-btn" href="{{route('blog.detail',$post->slug)}}">SAVOIR PLUS <span>+</span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div><!--/col-->    
             @endforeach
         </div>
     </div>
+    <!-- end container -->
 </section>
-<!-- end of blog -->
+<!-- end work-with-us -->
+@if (count($testimonials) != 0)
+<section >
+    {{-- <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 mt-5">
+                <div class="section-heading text-center">
+                    <h3>Un mot de nos clients</h3>
+                </div>
+            </div>
 
-@endsection
+        </div>
+        <div class="testi-wrap">
+
+            @foreach ($testimonials as $key=>$item)
+            <div class="client-single {{ $key == 0 ? "active" : "inactive" }} position-{{$key+1}}" data-position="position-{{$key+1}}">
+                <div class="client-img">
+                    <img src="{{$item->photo}}"
+                        alt="">
+                </div>
+                <div class="client-comment">
+                    <h6>{{$item->description}} </h6>
+                    <span><i class="fa fa-quote-left"></i></span>
+                </div>
+                <div class="client-info">
+                    <h3>dit par </h3>
+                    <p><a href="#">{{$item->name}}</a></p>
+                </div>
+            </div>
+            @endforeach
+
+
+
+        </div>
+    </div> --}}
+
+    <div class="gtco-testimonials mb-5 mt-5">
+        <h2>Clients Satisfaits</h2>
+        <p style="text-align: center">Nous fournissons toujours les meilleurs services. Ce que disent les clients satisfaits de Beauty Design.</p>
+        <div class="owl-carousel owl-carousel1 owl-theme">
+          @foreach ($testimonials as $testimonial)
+          <div>
+            <div class="card text-center"><img class="card-img-top" src="{{$testimonial->photo}}" alt="">
+              <div class="card-body">
+                <h5>{{$testimonial->name}} <br />
+                  <span> {{$testimonial->job}} </span></h5>
+                <p class="card-text">“ {{$testimonial->description}} ” </p>
+              </div>
+            </div>
+          </div>
+          @endforeach
+        </div>
+      </div>
+</section>
+@endif
+

@@ -1,67 +1,60 @@
+<style>
+    html {
+  scroll-behavior: smooth;
+   }
+   .slick-dots{
+    display: none !important;
+   }
+</style>
 @php
     $settings=DB::table('settings')->get();
 @endphp
-<!-- Start header -->
-<header class="site-header header-style-1" id="header">
-
-    <nav class="navigation navbar navbar-default">
-        <div class="container-fluid">
-            <div class="logo">
-                <a href="{{route('home')}}"><img alt src="@foreach($settings as $data) {{$data->logo}} @endforeach"></a>
-            </div>
-
-            <div class="navbar-header">
-                <button class="open-btn" type="button">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-
-            <div class="navbar-collapse collapse navigation-holder" id="navbar">
-                <button class="close-navbar"><i class="ti-close"></i></button>
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="{{route('home')}}">Accueil</a>
-                    </li>
-                    <li><a href="{{route('about-us')}}">À Propos</a></li>
-                    <li class="menu-item-has-children">
-                        <a href="{{route('product-grids')}}">Produits</a>
-                        <ul class="sub-menu">
-                            @foreach(Helper::getAllCategory() as $cat)
-                                <li>
-                                    <a href="{{route('product-cat',$cat->slug)}}">
-                                        {{$cat->title}}
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="{{route('blog')}}">Blog</a>
-                    </li>
-                    <li>
-                        <a href="{{route('promotions')}}">Promotions</a>
-                    </li>
-                    <li>
-                        <a href="{{route('contact')}}">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- end of nav-collapse -->
-
-            <div class="social-links">
-                <ul>
-                    {{-- <li><a href="javascript:"><i class="ti-pinterest"></i></a></li>
-                    <li><a href="javascript:"><i class="ti-skype"></i></a></li> --}}
-                    <li><a href="@foreach($settings as $data) {{$data->facebook}} @endforeach"><i class="ti-facebook"></i></a></li>
-                    <li><a href="@foreach($settings as $data) {{$data->linkedin}} @endforeach"><i class="ti-linkedin"></i></a></li>
-                    <li><a href="@foreach($settings as $data) {{$data->instagram}} @endforeach"><i class="ti-instagram"></i></a></li>
-                </ul>
-            </div>
+@foreach($settings as $data)
+  <div class="navigation-menu">
+    <div class="bg-layers"> <span></span> <span></span> <span></span> <span></span> </div>
+    <!-- end bg-layers -->
+    <div class="inner" data-tilt data-tilt-perspective="2000">
+      <div class="menu">
+        <ul>
+          <li><a href="{{route('home')}}">Accueil</a>
+          </li>
+          <li><a href="{{route('about-us')}}">À PROPOS</a></li>
+          <li><a href="{{route('contact')}}">Contact</a></li>
+          <li><a href="{{route('product-lists')}}">Produits</a></li>
+          <li><a href="{{route('blog')}}">Blog</a></li>
+        </ul>
+      </div>
+      <!-- end menu -->
+      <blockquote style="color: white">Beauty Design</blockquote>
+    </div>
+    <!-- end inner -->
+  </div>
+  <!-- end navigation-menu -->
+  <nav class="navbar">
+    <div class="left">
+      <div class="hamburger-menu">
+        <div class="hamburger Dyali" id="hamburger-menu" style="cursor: pointer;"> <span class="spandyali"></span> <span class="spandyali"></span> <span class="spandyali"></span>
         </div>
-        <!-- end of container -->
-    </nav>
-</header>
-<!-- end of header -->
+      </div>
+    </div>
+    <!-- end left -->
+    <div class="logo">
+      <a href="{{route('home')}}">
+         <h2 style="font-family: 'Yellowtail', cursive; color:#1D1E22 ;" class="zs1" id="zs1">Beauty Design</h2>
+         <h2 style="font-family: 'Yellowtail', cursive; color:#ffffff ;" class="zs2" id="zs2">Beauty Design</h2>
+        {{-- <img src="{{$data->photo}}" alt="Image"></a> --}}
+
+    </div>
+    <!-- end logo -->
+    <div class="right">
+      <ul class="language">
+        <li><a href="{{$data->facebook}}"><i  class="fa fa-facebook iconC"></i></a></li>
+        <li><a href="{{$data->instagram}}"><i  class="fa fa-instagram iconC"></i></a></li>
+        <li><a href="{{$data->linkedin}}"><i  class="fa fa-linkedin iconC"></i></a></li>
+      </ul>
+      <!-- <a style="right: 0; float: right; text-align: right;" href="direction.html"> Contactez nous</a>  -->
+      <!-- end hamburger-menu -->
+    </div>
+    <!-- end right -->
+  </nav>
+@endforeach

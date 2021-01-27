@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
-    protected $fillable=['title','description','tag'];
+    protected $fillable=['title','slug','description','tag','photo'];
 
     public static function countActivePost(){
         $data=Service::count();
