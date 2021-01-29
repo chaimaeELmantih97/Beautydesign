@@ -43,7 +43,7 @@ $posts=App\Models\Post::paginate(4);
             </div>
             <!-- end tagline -->
             <h1>Beauty<br>
-                <span>Design</span></h1>
+                <span style="-webkit-text-stroke-color:#ffffff !important;" >Design</span></h1>
 
             <!-- end slide-btn -->
         </div>
@@ -77,6 +77,7 @@ $posts=App\Models\Post::paginate(4);
                     @php
                     $author_info=DB::table('users')->where('id',$post->added_by)->get();
                     @endphp
+                     @foreach($author_info as $data)
                     @if ($data->photo)
                     <img src="{{$data->photo}}" alt="Image">
                     @else
@@ -84,7 +85,6 @@ $posts=App\Models\Post::paginate(4);
                     @endif
 
                     <span>
-                        @foreach($author_info as $data)
                         {{-- <img src="{{$data->photo}}" alt> --}}
                         Par
                         <a>
@@ -94,8 +94,9 @@ $posts=App\Models\Post::paginate(4);
                             Anonyme
                             @endif
                         </a>
-                        @endforeach
+
                     </span>
+                    @endforeach
                     </div>
                   {{-- <ul class="social-share">
                       <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>

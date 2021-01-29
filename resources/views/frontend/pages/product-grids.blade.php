@@ -45,7 +45,7 @@ $projets=App\Models\Service::paginate(5);
             </div>
             <!-- end tagline -->
             <h1>Beauty<br>
-                <span>Design</span></h1>
+                <span style="-webkit-text-stroke-color:#ffffff !important;" >Design</span></h1>
             {{-- <div class="slide-btn"> <a href="#">
                     <div class="lines"> <span></span> <span></span> </div>
                     <!-- end lines -->

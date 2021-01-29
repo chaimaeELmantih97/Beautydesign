@@ -15,7 +15,6 @@
           <figure class="fadeInUp animated"> <img src="{{url('frontend/images/loader.gif')}}" alt="Image"> </figure>
           <span class="typewriter" id="typewriter"></span>
         </div>
-        <!-- end inner -->
       </div>
       <!-- end preloader -->
       <div class="transition-overlay">

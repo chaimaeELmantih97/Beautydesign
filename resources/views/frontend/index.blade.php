@@ -1,102 +1,121 @@
 @extends('frontend.layouts.master')
 @section('title','Beauty Design Design - Accueil')
 @section('main-content')
+<link href="{{url('/ms-icon-310x310.png')}}" rel="shortcut icon">
 <style>
+    .gtco-testimonials {
+        position: relative;
+        margin-top: 30px;
+    }
 
-.gtco-testimonials {
-  position: relative;
-  margin-top: 30px;
-}
-@media (max-width: 767px) {
-  .gtco-testimonials {
-    margin-top: 20px;
-  }
-}
-.gtco-testimonials h2 {
-  font-size: 30px;
-  text-align: center;
-  color: #333333;
-  margin-bottom: 50px;
-}
-.gtco-testimonials .owl-stage-outer {
-  padding: 30px 0;
-}
-.gtco-testimonials .owl-nav {
-  display: none;
-}
-.gtco-testimonials .owl-dots {
-  text-align: center;
-}
-.gtco-testimonials .owl-dots span {
-  position: relative;
-  height: 10px;
-  width: 10px;
-  border-radius: 50%;
-  display: block;
-  background: #fff;
-  border: 2px solid #01b0f8;
-  margin: 0 5px;
-}
-.gtco-testimonials .owl-dots .active {
-  box-shadow: none;
-}
-.gtco-testimonials .owl-dots .active span {
-  background: #01b0f8;
-  box-shadow: none;
-  height: 12px;
-  width: 12px;
-  margin-bottom: -1px;
-}
-.gtco-testimonials .card {
-  background: #fff;
-  box-shadow: 0 8px 30px -7px #c9dff0;
-  margin: 0 20px;
-  padding: 0 10px;
-  border-radius: 20px;
-  border: 0;
-}
-.gtco-testimonials .card .card-img-top {
-  max-width: 100px;
-  border-radius: 50%;
-  margin: 15px auto 0;
-  box-shadow: 0 8px 20px -4px #e3eeb58c;
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-}
-.gtco-testimonials .card h5 {
-  color: #D6A063;
-  font-size: 21px;
-  line-height: 1.3;
-}
-.gtco-testimonials .card h5 span {
-  font-size: 18px;
-  color: #666666;
-}
-.gtco-testimonials .card p {
-  font-size: 18px;
-  color: #555;
-  padding-bottom: 15px;
-}
-.gtco-testimonials .active {
-  opacity: 0.5;
-  transition: all 0.3s;
-}
-.gtco-testimonials .center {
-  opacity: 1;
-}
-.gtco-testimonials .center h5 {
-  font-size: 24px;
-}
-.gtco-testimonials .center h5 span {
-  font-size: 20px;
-}
-.gtco-testimonials .center .card-img-top {
-  max-width: 100%;
-  height: 120px;
-  width: 120px;
-  object-fit: cover;
-}
+    @media (max-width: 767px) {
+        .gtco-testimonials {
+            margin-top: 20px;
+        }
+    }
+
+    /*.gtco-testimonials h2 {*/
+    /*    font-size: 30px;*/
+    /*    text-align: center;*/
+    /*    color: #333333;*/
+    /*    margin-bottom: 50px;*/
+    /*}*/
+
+    .gtco-testimonials .owl-stage-outer {
+        padding: 30px 0;
+    }
+
+    .gtco-testimonials .owl-nav {
+        display: none;
+    }
+
+    .gtco-testimonials .owl-dots {
+        text-align: center;
+    }
+
+    .gtco-testimonials .owl-dots span {
+        position: relative;
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        display: block;
+        background: #fff;
+        border: 2px solid #01b0f8;
+        margin: 0 5px;
+    }
+
+    .gtco-testimonials .owl-dots .active {
+        box-shadow: none;
+    }
+
+    .gtco-testimonials .owl-dots .active span {
+        background: #01b0f8;
+        box-shadow: none;
+        height: 12px;
+        width: 12px;
+        margin-bottom: -1px;
+    }
+
+    .gtco-testimonials .card {
+        background: #fff;
+        box-shadow: 0 8px 30px -7px #c9dff0;
+        margin: 0 20px;
+        padding: 0 10px;
+        border-radius: 20px;
+        border: 0;
+    }
+
+    .gtco-testimonials .card .card-img-top {
+        max-width: 100px;
+        border-radius: 50%;
+        margin: 15px auto 0;
+        box-shadow: 0 8px 20px -4px #e3eeb58c;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+
+    .gtco-testimonials .card h5 {
+        color: #D6A063;
+        font-size: 21px;
+        line-height: 1.3;
+    }
+
+    .gtco-testimonials .card h5 span {
+        font-size: 18px;
+        color: #666666;
+    }
+
+    .gtco-testimonials .card p {
+        font-size: 18px;
+        color: #555;
+        padding-bottom: 15px;
+    }
+
+    .gtco-testimonials .active {
+        opacity: 0.5;
+        transition: all 0.3s;
+    }
+
+    .gtco-testimonials .center {
+        opacity: 1;
+    }
+
+    .gtco-testimonials .center h5 {
+        font-size: 24px;
+    }
+
+    .gtco-testimonials .center h5 span {
+        font-size: 20px;
+    }
+
+    .gtco-testimonials .center .card-img-top {
+        max-width: 100%;
+        height: 120px;
+        width: 120px;
+        object-fit: cover;
+    }
+
     .header1 {
         display: none !important;
     }
@@ -109,10 +128,11 @@
         color: #1D1E22;
     }
 
-    .teamImg{
+    .teamImg {
         height: 200px;
-        object-fit:cover;
+        object-fit: cover;
     }
+
     @media only screen and (max-width: 768px) {
         .header1 {
             display: block !important;
@@ -137,14 +157,17 @@
         .hamburger span {
             background: #ffffff !important;
         }
-        .teamImg{
-        height: 300px;
-        object-fit:cover;
-       }
+
+        .teamImg {
+            height: 300px;
+            object-fit: cover;
+        }
     }
-    .spanmenu{
+
+    .spanmenu {
         background: #ffffff !important;
     }
+
 </style>
 @php
 $settings=DB::table('settings')->get();
@@ -226,7 +249,7 @@ $settings=DB::table('settings')->get();
 </section>
 
 <!-- section 2 -->
-<section  style="background-color: #f7e6d567">
+<section style="background-color: #f7e6d567">
     <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col-md-4">
@@ -238,7 +261,8 @@ $settings=DB::table('settings')->get();
                         style="background-color: rgba(24, 26, 19, 0.473); text-align:center;">
                         <h2 class="card-title">Catalogue Rayonnage </h2>
                         <div style="width: 100%; display: flex; align-items: center; justify-content: center;">
-                            <a href="/catalogueR.pdf" target="_blanck" class="btn btn-outline-light align-center"> <i class="fa fa-download download-btn"></i> Voir Le catalogue</a>
+                            <a href="/catalogueR.pdf" target="_blanck" class="btn btn-outline-light align-center"> <i
+                                    class="fa fa-download download-btn"></i> Voir Le catalogue</a>
                         </div>
                     </div>
                 </div>
@@ -250,7 +274,8 @@ $settings=DB::table('settings')->get();
                         style="background-color: rgba(14, 14, 14, 0.534); text-align:center;">
                         <h2 class="card-title">Catalogue Mobilier de Bureau .</h2>
                         <div style="width: 100%; display: flex; align-items: center; justify-content: center;">
-                            <a href="/catalogueM.pdf" target="_blanck" class="btn btn-outline-light align-center"><i class="fa fa-download download-btn"></i> Voir le catalogue</a>
+                            <a href="/catalogueM.pdf" target="_blanck" class="btn btn-outline-light align-center"><i
+                                    class="fa fa-download download-btn"></i> Voir le catalogue</a>
                         </div>
                     </div>
                 </div>
@@ -270,35 +295,35 @@ $settings=DB::table('settings')->get();
                             style=" border: none !important; border-radius: none; width: 100%; height:100%; background-color: royalblue;">
                             <img class="card-img" style=" width: 100%; height:100%; object-fit: cover;"
                                 src="{{$about->photo}}" alt="Bologna">
-                            <div class="card-img-overlay text-white  d-flex flex-column justify-content-center"
-                                style="background-color: rgba(50, 54, 16, 0.733); text-align:center;">
-                                <h2 class="card-title">À PROPOS DE NOUS.</h2>
-                            </div>
-                        </div>
-                    </div> --}}
+                    <div class="card-img-overlay text-white  d-flex flex-column justify-content-center"
+                        style="background-color: rgba(50, 54, 16, 0.733); text-align:center;">
+                        <h2 class="card-title">À PROPOS DE NOUS.</h2>
+                    </div>
                 </div>
-                <div class="row mt-2" style="height: 60%;">
-                    <div class="col-md-12">
-                        <div class="item" style="width: 100%; height:100%;">
-                            <div class="card border-0"
-                                style="height:420px; border: none !important; border-radius: none;">
-                                <img class="card-img" style="height: 100%; width:100%" src="https://images.pexels.com/photos/245240/pexels-photo-245240.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                                    alt="Bologna">
-                                <div class="card-img-overlay text-white  d-flex flex-column justify-content-center"
-                                    style="background-color: rgba(14, 14, 14, 0.651); text-align:center;">
-                                    <h4 class="card-title">N’hésitez pas à nous contacter pour échanger
-                                        au sujet de l’aménagement de votre espace professionnel ou Vos Dépôts de Stockage.</h4>
-                                    <div
-                                        style="width: 100%; display: flex; align-items: center; justify-content: center;">
-                                        <a href="{{route('contact')}}" class="btn btn-outline-light align-center">Contactez nous</a>
-                                    </div>
-                                </div>
+            </div> --}}
+        </div>
+        <div class="row mt-2" style="height: 60%;">
+            <div class="col-md-12">
+                <div class="item" style="width: 100%; height:100%;">
+                    <div class="card border-0" style="height:420px; border: none !important; border-radius: none;">
+                        <img class="card-img" style="height: 100%; width:100%"
+                            src="https://images.pexels.com/photos/245240/pexels-photo-245240.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                            alt="Bologna">
+                        <div class="card-img-overlay text-white  d-flex flex-column justify-content-center"
+                            style="background-color: rgba(14, 14, 14, 0.651); text-align:center;">
+                            <h4 class="card-title">N’hésitez pas à nous contacter pour échanger
+                                au sujet de l’aménagement de votre espace professionnel ou Vos Dépôts de Stockage.</h4>
+                            <div style="width: 100%; display: flex; align-items: center; justify-content: center;">
+                                <a href="{{route('contact')}}" class="btn btn-outline-light align-center">Contactez
+                                    nous</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 </section>
 
@@ -384,57 +409,33 @@ $settings=DB::table('settings')->get();
 </section>
 <!-- end work-with-us -->
 @if (count($testimonials) != 0)
-<section >
-    {{-- <div class="container">
+<section style="background-color :#1D1E22 !important; ">
+    <div class="container" style="position: relative;z-index: 2; margin-top:10em;">
         <div class="row">
-            <div class="col-md-8 offset-md-2 mt-5">
-                <div class="section-heading text-center">
-                    <h3>Un mot de nos clients</h3>
-                </div>
+            <div class="col-12 wow fadeIn">
+                <h6 style="color:white; display: block; line-height: 1;margin-bottom: 20px;font-family: 'Fjalla One', sans-serif;font-size: 14px;">Ce que disent les clients
+                    satisfaits de Beauty Design.</h6>
+                <h2 style="margin-bottom: 60px;
+                font-weight: 800;
+                font-size: 60px;
+                line-height: 1.2;color:white; ">Clients Satisfaits</h2>
             </div>
-
         </div>
-        <div class="testi-wrap">
-
-            @foreach ($testimonials as $key=>$item)
-            <div class="client-single {{ $key == 0 ? "active" : "inactive" }} position-{{$key+1}}" data-position="position-{{$key+1}}">
-                <div class="client-img">
-                    <img src="{{$item->photo}}"
-                        alt="">
-                </div>
-                <div class="client-comment">
-                    <h6>{{$item->description}} </h6>
-                    <span><i class="fa fa-quote-left"></i></span>
-                </div>
-                <div class="client-info">
-                    <h3>dit par </h3>
-                    <p><a href="#">{{$item->name}}</a></p>
+    </div>
+    <div class="gtco-testimonials mt-2" style=" margin-bottom:10em;">
+        <div class="owl-carousel owl-carousel1 owl-theme">
+            @foreach ($testimonials as $testimonial)
+            <div>
+                <div class="card text-center"><img class="card-img-top" src="{{$testimonial->photo}}" alt="">
+                    <div class="card-body">
+                        <h5>{{$testimonial->name}} <br />
+                            <span> {{$testimonial->job}} </span></h5>
+                        <p class="card-text">“ {{$testimonial->description}} ” </p>
+                    </div>
                 </div>
             </div>
             @endforeach
-
-
-
         </div>
-    </div> --}}
-
-    <div class="gtco-testimonials mb-5 mt-5">
-        <h2>Clients Satisfaits</h2>
-        <p style="text-align: center">Nous fournissons toujours les meilleurs services. Ce que disent les clients satisfaits de Beauty Design.</p>
-        <div class="owl-carousel owl-carousel1 owl-theme">
-          @foreach ($testimonials as $testimonial)
-          <div>
-            <div class="card text-center"><img class="card-img-top" src="{{$testimonial->photo}}" alt="">
-              <div class="card-body">
-                <h5>{{$testimonial->name}} <br />
-                  <span> {{$testimonial->job}} </span></h5>
-                <p class="card-text">“ {{$testimonial->description}} ” </p>
-              </div>
-            </div>
-          </div>
-          @endforeach
-        </div>
-      </div>
+    </div>
 </section>
 @endif
-

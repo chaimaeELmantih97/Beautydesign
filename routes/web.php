@@ -81,9 +81,9 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth','admin']],function(){
     Route::post('change-password', 'AdminController@changPasswordStore')->name('change.password');
 });
 
-Route::get('references', function () {
+Route::get('promotions', function () {
     return view('frontend.pages.references');
-})->name('references');
+})->name('promotions');
 
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {

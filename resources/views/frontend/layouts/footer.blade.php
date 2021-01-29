@@ -1,12 +1,12 @@
 @php
 $brands=App\Models\Brand::all();
-$brands2=App\Models\Brand::limit(8)->get();
 @endphp
 <style>
 
 .owl-dots {
 text-align: center;
 margin-top: 4%;
+display: none;
 }
 .owl-dot {
 display: inline-block;
@@ -26,35 +26,21 @@ background-color: #000 !important;
 }
 </style>
 <section class="clients">
+    <div class="container" style="position: relative;z-index: 2;">
+        <div class="row">
+            <div class="col-12 wow fadeIn">
+                <h6 style="display: block; line-height: 1;margin-bottom: 20px;font-family: 'Fjalla One', sans-serif;font-size: 14px;">Clients avec lesquels nous sommes fiers de travailler :</h6>
+                <h2 style="margin-bottom: 60px;
+                font-weight: 800;
+                font-size: 60px;
+                line-height: 1.2;">Nos Références </h2>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row text-center" style="text-align: center">
-            {{-- <div class="col-lg-5 wow fadeIn">
-                <h2>Nos clients</h2>
-                <h4>nous avons travaillé avec des clients spéciaux:</h4>
-                @if (count($brands)>8)
-                <div class="custom-link wow fadeIn"> <a href="#">
-                        <div class="lines"> <span></span> <span></span> </div>
-                        <!-- end lines -->
-                        <b>Savoir plus</b>
-                    </a> </div>
-                @endif
-
-                <!-- end custom-link -->
-                <!-- end custom-link -->
-            </div>
-            <div class="col-lg-7 wow fadeIn" data-wow-delay="0.10s">
-                <ul>
-                    @foreach ($brands2 as $key=>$brand)
-                    <li><img src="{{$brand->photo}}" style="height: 100px;" alt="Image"><small>{{$brand->title}}</small>
-                    </li>
-                    @endforeach
-                </ul>
-            </div> --}}
-            <div style="display: flex; align-items: center; justify-content: center;width: 100%;">
-                <h3 class="mb-5" style="text-align: center">Clients avec lesquels nous sommes fiers de travailler :</h3>
-            </div>
             <div class="brand-carousel section-padding owl-carousel">
-                @foreach ($brands2 as $key=>$brand)
+                @foreach ($brands as $key=>$brand)
                 <div class="single-logo">
                     <img src="{{$brand->photo}}" style="height: 150px; width:170px; object-fit: contain; padding:7%" alt="">
                 </div>
@@ -100,6 +86,9 @@ $settings=DB::table('settings')->get();
                     <address>
                         <a href="tel:{{$data->phone}}"> {{$data->phone}}</a>
                     </address>
+                    <address>
+                        <a href="https://api.whatsapp.com/send?phone=212660756195"> 212 6 60 75 61 95</a>
+                    </address>
                 </div>
                 <!-- end col-4 -->
                 <div class="col-md-3">
@@ -117,12 +106,24 @@ $settings=DB::table('settings')->get();
     <div class="footer-bottom wow fadeIn">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-6 mt-2">
                     <h5>CONNECTER AVEC Beauty Design </h5>
                     <ul>
                         <li><a href="{{$data->instagram}}">Instagram</a></li>
                         <li><a href="{{$data->facebook}}">Facebook</a></li>
                         <li><a href="{{$data->linkedin}}">Linkedin</a></li>
+                        <li><a href="https://api.whatsapp.com/send?phone=212660756195">Whatsapp</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 float-right mt-2">
+                    <h5>Liens Utiles </h5>
+                    <ul>
+                        <li><a href="{{route('home')}}">Accueil</a></li>
+                        <li><a href="{{route('about-us')}}">À PROPOS</a></li>
+                        <li><a href="{{route('product-lists')}}">Produits</a></li>
+                        <li><a href="{{route('promotions')}}">Promotions</a></li>
+                        <li><a href="{{route('blog')}}">Blogs</a></li>
+                        <li><a href="{{route('contact')}}">Contact</a></li>
                     </ul>
                 </div>
                 <!-- end col-8 -->
@@ -300,20 +301,22 @@ $settings=DB::table('settings')->get();
 
 <script>
     $('.brand-carousel').owlCarousel({
-  loop:true,
-  margin:20,
-  autoplay:true,
-  responsive:{
-    0:{
-      items:1
-    },
-    600:{
-      items:3
-    },
-    1000:{
-      items:5
+    loop:true,
+    margin:20,
+    autoplay:true,
+    responsive:{
+        0:{
+        items:2
+        },
+        600:{
+        items:3
+        },
+        1000:{
+        items:6
+        }
     }
-  }
-})
+    })
 
 </script>
+
+

@@ -19,12 +19,9 @@
 </style>
 @php
 $settings=DB::table('settings')->get();
+$promotions=App\Models\Promotion::all();
 @endphp
 @foreach ($settings as $data)
-@php
-     $brands=App\Models\Brand::all();
-     $brands2=App\Models\Brand::limit(8)->get();
- @endphp
 <header class="header">
     <aside class="left-side">
         <ul>
@@ -37,11 +34,11 @@ $settings=DB::table('settings')->get();
         data-imageDepth="{{url('images/bg.jpg')}}" data-horizontalThreshold="30" data-verticalThreshold="13">
         <div class="container">
             <div class="tagline"><span></span>
-                <h6>Références</h6>
+                <h6>Promotions</h6>
             </div>
             <!-- end tagline -->
             <h1>Beauty<br>
-                <span>Design</span></h1>
+                <span style="-webkit-text-stroke-color:#ffffff !important;" >Design</span></h1>
 
             <!-- end slide-btn -->
         </div>
@@ -49,32 +46,46 @@ $settings=DB::table('settings')->get();
     </div>
     <!-- perspective end  -->
 </header>
-<!-- end header -->
-<section class="clients">
+<section class="work-with-us">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 wow fadeIn" data-wow-delay="0.10s">
-                <ul>
-                    @foreach ($brands as $key=>$brand)
-                    <li><img src="{{$brand->photo}}" style="height: 100px;" alt="Image"><small>{{$brand->title}}</small></li>
-                    @endforeach
-                </ul>
+            <div class="col-12 wow fadeIn">
+                <h6>Promos</h6>
+                <h2>La liste des promotions</h2>
             </div>
-            <div class="col-lg-7 wow fadeIn" data-wow-delay="0.10s">
-                <ul>
-                    @foreach ($brands as $key=>$brand)
-                    <li><img src="{{$brand->photo}}" style="height: 100px;" alt="Image"><small>{{$brand->title}}</small></li>
-                    @endforeach
-                </ul>
-            </div>
-            <!-- end col-7 -->
         </div>
-        <!-- end row -->
+        <div class="card-slider">
+            @foreach ($promotions as $key => $service)
+            <div class="col-lg-12">
+                <div class="card border-0 w-100">
+                    {{-- <img class="card-img-top" src="https://picsum.photos/seed/picsum/200/200" alt="Card image cap"> --}}
+                    @if($service->photo)
+                    <img class="card-img-top" src="{{$service->photo}}" style="height: 200px; object-fit:cover">
+                    @else
+                    <img class="card-img-top" src="{{asset('backend/img/thumbnail-default.jpg')}}"
+                        style="height: 200px; object-fit:cover;">
+                    @endif
+                    {{-- <div class="card-body"> --}}
+                        {{-- <h5 class="card-title"><em><b>{{$service->title}}</b></em></h5> --}}
+                        {{-- @php --}}
+                        {{-- // $shortdesc=substr($service->description,0,100); --}}
+                        {{-- @endphp --}}
+                        {{-- <p>
+                            {{$service->description}}
+                        </p> --}}
+                    {{-- </div> --}}
+                    <div
+                        style="background: #202020; width:100%; padding:10px; display:flex; justify-content: space-between">
+                        <a href="#" style="color: #ffffff;"><em><b>{{$service->title}}</b></em></a>
+
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
     </div>
     <!-- end container -->
 </section>
-
-<!-- end hello -->
 @endforeach
 
 

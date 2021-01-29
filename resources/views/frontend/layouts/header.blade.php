@@ -19,9 +19,10 @@
           <li><a href="{{route('home')}}">Accueil</a>
           </li>
           <li><a href="{{route('about-us')}}">À PROPOS</a></li>
-          <li><a href="{{route('contact')}}">Contact</a></li>
           <li><a href="{{route('product-lists')}}">Produits</a></li>
+          <li><a href="{{route('promotions')}}">Promotions</a></li>
           <li><a href="{{route('blog')}}">Blog</a></li>
+          <li><a href="{{route('contact')}}">Contact</a></li>
         </ul>
       </div>
       <!-- end menu -->

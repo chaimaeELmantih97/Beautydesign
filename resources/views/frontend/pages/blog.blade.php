@@ -43,7 +43,7 @@ $posts=App\Models\Post::paginate(4);
             </div>
             <!-- end tagline -->
             <h1>Beauty<br>
-                <span>Design</span></h1>
+                <span style="-webkit-text-stroke-color:#ffffff !important;" >Design</span></h1>
 
             <!-- end slide-btn -->
         </div>
@@ -95,10 +95,12 @@ $posts=App\Models\Post::paginate(4);
                             @endphp
                             <small class="post-date">{{$date}}</small>
                             <h3 class="post-title"><a href="{{route('blog.detail',$post->slug)}}">{{$post->title}}</a></h3>
+                            @php
+                            $author_info=DB::table('users')->where('id',$post->added_by)->get();
+                            // dd($author_info);
+                            @endphp
+                            @foreach($author_info as $data)
                             <div class="post-author">
-                                @php
-                                $author_info=DB::table('users')->where('id',$post->added_by)->get();
-                                @endphp
                                 @if ($data->photo)
                                 <img src="{{$data->photo}}" alt="Image">
                                 @else
@@ -106,7 +108,7 @@ $posts=App\Models\Post::paginate(4);
                                 @endif
 
                                 <span>
-                                    @foreach($author_info as $data)
+
                                     {{-- <img src="{{$data->photo}}" alt> --}}
                                     Par
                                     <a>
@@ -118,8 +120,9 @@ $posts=App\Models\Post::paginate(4);
                                     </a>
 
                                 </span>
-                                @endforeach
+
                             </div>
+                            @endforeach
                             <p class="post-text">
                                 {!! html_entity_decode($post->summary) !!}
                             </p>

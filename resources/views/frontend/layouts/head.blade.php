@@ -7,12 +7,10 @@
   <meta name="author" content="EL Mantih Chaimae">
   <meta name="description" content="Zinab Sqali Design">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
   <!-- SOCIAL MEDIA META -->
   <meta property="og:description" content="Beauty Design">
 
-  <!-- FAVICON FILES -->
-  {{-- <link href="http://zsdesign.ma/wp-content/uploads/2019/10/zinebsaqalli-3.png" rel="shortcut icon"> --}}
 
   <!-- CSS FILES -->
   <link rel="stylesheet" href="{{url('frontend/css/animate.min.css')}}">
@@ -82,9 +80,12 @@
     }
     .slick-next:before,
     .slick-prev:before {
-        color:#7078C2 !important;
+        color:#000000 !important;
     }
 
 
 
 </style>
+
+  <!-- FAVICON FILES -->
+  <link href="{{url('/ms-icon-310x310.png')}}" rel="shortcut icon">
