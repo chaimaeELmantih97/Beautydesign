@@ -33,31 +33,30 @@ $projets=App\Models\Service::paginate(5);
     <aside class="left-side">
         <ul>
             <li><a href="{{$data->facebook}}">FACEBOOK</a></li>
-            <li><a href="{{$data->instagram}}">Instagram</a></li>
-            <li><a href="{{$data->linkedin}}">Linkedin</a></li>
+            <li><a href="{{$data->instagram}}">INSTAGRAM</a></li>
+            <li><a href="{{$data->linkedin}}">LINKEDIN</a></li>
         </ul>
     </aside>
     <div class="perspective" id="gl" data-imageOriginal="{{url('images/bg.jpg')}}"
         data-imageDepth="{{url('images/bg.jpg')}}" data-horizontalThreshold="30" data-verticalThreshold="13">
         <div class="container">
-            <div class="tagline"><span></span>
-                <h6>Liste des produits</h6>
-            </div>
+            {{-- <div class="tagline"><span></span>
+                <h6>Contactez Nous</h6>
+            </div> --}}
             <!-- end tagline -->
-            <h1>Beauty<br>
-                <span style="-webkit-text-stroke-color:#ffffff !important;" >Design</span></h1>
-            {{-- <div class="slide-btn"> <a href="#">
+            <h1>Liste<br>
+                <span style="-webkit-text-stroke-color:#ffffff !important;" >des Produits</span></h1>
+                <div class="slide-btn"> <a href="#produits">
                     <div class="lines"> <span></span> <span></span> </div>
                     <!-- end lines -->
-                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        x="0px" y="0px" viewBox="0 0 104 104" enable-background="new 0 0 104 104" xml:space="preserve">
-                        <circle class="video-play-circle" fill="none" stroke="#fff" stroke-width="2"
-                            stroke-miterlimit="1" cx="52" cy="52" r="50" />
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+               viewBox="0 0 104 104" enable-background="new 0 0 104 104" xml:space="preserve">
+                      <circle class="video-play-circle" fill="none" stroke="#fff" stroke-width="2" stroke-miterlimit="1" cx="52" cy="52" r="50"/>
                     </svg>
-                    <b>LEARN MORE</b>
-                </a> </div> --}}
-            <!-- end slide-btn -->
+                    <b>Défiler vers le bas </b> </a> </div>
+
         </div>
+        {{-- this is fucking crazy --}}
         <!-- end container -->
     </div>
     <!-- perspective end  -->
@@ -68,7 +67,7 @@ $projets=App\Models\Service::paginate(5);
 $bg=['#ece6f4','#ebf8f3','#f4eedf','#e5f2f7','#f5efe8'];
 $i=0;
 @endphp
-<div class="container mt-5">
+<div class="container mt-5" id="produits">
     <div class="row float-right">
             @php
             // $category = new Category();

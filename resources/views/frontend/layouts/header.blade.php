@@ -26,7 +26,7 @@
         </ul>
       </div>
       <!-- end menu -->
-      <blockquote style="color: white">Beauty Design</blockquote>
+      {{-- <blockquote style="color: white">Beauty Design</blockquote> --}}
     </div>
     <!-- end inner -->
   </div>
@@ -49,9 +49,9 @@
     <!-- end logo -->
     <div class="right">
       <ul class="language">
-        <li><a href="{{$data->facebook}}"><i  class="fa fa-facebook iconC"></i></a></li>
-        <li><a href="{{$data->instagram}}"><i  class="fa fa-instagram iconC"></i></a></li>
-        <li><a href="{{$data->linkedin}}"><i  class="fa fa-linkedin iconC"></i></a></li>
+        <li><a href="{{$data->facebook}}" target='_blanck' style="font-size:24px;"><i  class="fa fa-facebook iconC"></i></a></li>
+        <li><a href="{{$data->instagram}}" target='_blanck' style="font-size:24px;"><i  class="fa fa-instagram iconC"></i></a></li>
+        <li><a href="{{$data->linkedin}}" target='_blanck' style="font-size:24px;"><i  class="fa fa-linkedin iconC"></i></a></li>
       </ul>
       <!-- <a style="right: 0; float: right; text-align: right;" href="direction.html"> Contactez nous</a>  -->
       <!-- end hamburger-menu -->

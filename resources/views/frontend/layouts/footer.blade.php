@@ -76,26 +76,25 @@ $settings=DB::table('settings')->get();
     <div class="footer-contact wow fadeIn">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <address>
                         {{$data->address}}
                     </address>
                 </div>
                 <!-- end col-4 -->
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <address>
                         <a href="tel:{{$data->phone}}"> {{$data->phone}}</a>
                     </address>
                     <address>
-                        <a href="https://api.whatsapp.com/send?phone=212660756195"> 212 6 60 75 61 95</a>
+                        <a href="https://api.whatsapp.com/send?phone=212660756195"> +212 660 756 195</a>
                     </address>
-                </div>
-                <!-- end col-4 -->
-                <div class="col-md-3">
                     <address>
                         <a href="mailto:{{$data->email}}">{{$data->email}}</a>
                     </address>
                 </div>
+                <!-- end col-4 -->
+
                 <!-- end col-2 -->
             </div>
             <!-- end row -->
@@ -109,10 +108,10 @@ $settings=DB::table('settings')->get();
                 <div class="col-lg-6 mt-2">
                     <h5>CONNECTER AVEC Beauty Design </h5>
                     <ul>
-                        <li><a href="{{$data->instagram}}">Instagram</a></li>
-                        <li><a href="{{$data->facebook}}">Facebook</a></li>
-                        <li><a href="{{$data->linkedin}}">Linkedin</a></li>
-                        <li><a href="https://api.whatsapp.com/send?phone=212660756195">Whatsapp</a></li>
+                        <li><a target='_blank' href="{{$data->instagram}}">Instagram</a></li>
+                        <li><a target='_blank' href="{{$data->facebook}}">Facebook</a></li>
+                        <li><a target='_blank' href="{{$data->linkedin}}">Linkedin</a></li>
+                        <li><a target='_blank' href="https://api.whatsapp.com/send?phone=212660756195">Whatsapp</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-6 float-right mt-2">

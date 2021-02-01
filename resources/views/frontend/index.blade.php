@@ -284,7 +284,7 @@ $settings=DB::table('settings')->get();
 
                 <div class="row ">
                     <div class="col-md-12 mt-2" style="">
-                        <h5><b><em>Present dans le marché depuis 2015 .</em></b></h5>
+                        <h5><b><em>Présent  dans le marché depuis 2015 .</em></b></h5>
                         <h3 style="color: #D6A063"> <b>Beauty Design</b> </h3>
                         <p style="text-align:justify; text-justify: inter-word;">
                             {!! html_entity_decode($about->summary) !!}
@@ -387,19 +387,20 @@ $settings=DB::table('settings')->get();
                         style="height: 200px;">
                     @endif
                     <div class="card-body">
-                        {{-- <h5 class="card-title"><em><b>{{$service->title}}</b></em></h5> --}}
+                        <h5 class="card-title"><em><b>{{$service->title}}</b></em></h5>
                         @php
-                        // $shortdesc=substr($service->description,0,100);
+                        $shortdesc=substr($service->description,0,100);
                         @endphp
                         <p>
-                            {{$service->description}}
+                            {{ $shortdesc}} ...
                         </p>
                     </div>
                     <div
-                        style="background: #202020; width:100%; padding:10px; display:flex; justify-content: space-between">
-                        <a href="#" style="color: #ffffff;"><em><b>{{$service->title}}</b></em></a>
+                      style="background: #202020; width:100%; padding:10px; display:flex; justify-content: space-between">
+                      <a href="{{route('detailservice',$service->slug)}}" style="color: #ffffff;">Savoir plus</a>
+                      <a href="{{route('detailservice',$service->slug)}}" style="color: #ffffff;"><i class="fa fa-arrow-right mt-1"></i></a>
 
-                    </div>
+                  </div>
                 </div>
             </div>
             @endforeach

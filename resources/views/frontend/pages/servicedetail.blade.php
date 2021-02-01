@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','Beauty Design Design - Details de produit')
+@section('title','Beauty Design Design - Details de service')
 
 @section('main-content')
 <style>
@@ -37,8 +37,8 @@ $settings=DB::table('settings')->get();
             </div> --}}
             <!-- end tagline -->
             <h1>Details<br>
-                <span style="-webkit-text-stroke-color:#ffffff !important;" >de Produit</span></h1>
-                <div class="slide-btn"> <a href="#produit">
+                <span style="-webkit-text-stroke-color:#ffffff !important;" >de Service</span></h1>
+                <div class="slide-btn"> <a href="#service">
                     <div class="lines"> <span></span> <span></span> </div>
                     <!-- end lines -->
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -56,7 +56,7 @@ $settings=DB::table('settings')->get();
 <!-- end header -->
 @endforeach
 
-<section class="works-single" id="produit">
+<section class="works-single" id="service">
     <div class="container">
       <div class="row">
         <div class="col-12 wow fadeIn mt-3">
@@ -87,10 +87,10 @@ $settings=DB::table('settings')->get();
                 <p>{!!$product_detail->description!!}</p>
             </div>
             <!-- end col-6 -->
-            <div class="col-md-4 wow fadeIn" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeIn;">
+            {{-- <div class="col-md-4 wow fadeIn" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeIn;">
                 <h5>Categorie</h5>
                 <p>{{$product_detail->cat_info->title}}</p>
-            </div>
+            </div> --}}
             <!-- end col-3 -->
             {{-- <div class="col-md-4 wow fadeIn" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeIn;">
                 <h5>Ville</h5>
@@ -130,49 +130,10 @@ $settings=DB::table('settings')->get();
     </div>
     <!-- end container -->
   </section>
-  @php
+  {{-- @php
   $oProducts=App\Models\Product::where('id','!=',$product_detail->id)->get();
-@endphp
+@endphp --}}
 <!-- end works -->
-<section class="work-with-us">
-  <div class="container">
-      <div class="row">
-          <div class="col-12 wow fadeIn">
-              <h6>Produits associés</h6>
-              <h2>Autres Produits</h2>
-          </div>
-      </div>
-      <div class="card-slider">
-          @foreach ($oProducts as $key => $p)
-          <div class="col-lg-12">
-              <div class="card border-0 w-100">
-                  {{-- <img class="card-img-top" src="https://picsum.photos/seed/picsum/200/200" alt="Card image cap"> --}}
-                @php
-                    $photos = explode(',',$p->photo);
-                @endphp
-                @if($p->photo)
-                <img src="{{$photos[0]}}" style="height: 200px; object-fit:cover" alt="">
-                @else
-                <img src="{{asset('backend/img/thumbnail-default.jpg')}}" style="height: 200px; object-fit:cover" alt="">
-                @endif
-                  <div class="card-body">
-                      <h5 class="card-title"><em><b>{{$p->title}}</b></em></h5>
-                      <p>
-                          {!!$p->summary!!}
-                      </p>
-                  </div>
-                  <div
-                      style="background: #202020; width:100%; padding:10px; display:flex; justify-content: space-between">
-                      <a href="{{route('product-detail',$p->slug)}}" style="color: #ffffff;">Savoir plus</a>
-                      <a href="{{route('product-detail',$p->slug)}}" style="color: #ffffff;"><i class="fa fa-arrow-right"></i></a>
 
-                  </div>
-              </div>
-          </div>
-          @endforeach
-      </div>
-  </div>
-  <!-- end container -->
-</section>
 <!-- end work-with-us -->
 @endsection

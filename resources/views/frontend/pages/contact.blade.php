@@ -32,20 +32,29 @@ $settings=DB::table('settings')->get();
     <div class="perspective" id="gl" data-imageOriginal="{{url('images/bg.jpg')}}"
         data-imageDepth="{{url('images/bg.jpg')}}" data-horizontalThreshold="30" data-verticalThreshold="13">
         <div class="container">
-            <div class="tagline"><span></span>
+            {{-- <div class="tagline"><span></span>
                 <h6>Contactez Nous</h6>
-            </div>
+            </div> --}}
             <!-- end tagline -->
-            <h1>Beauty<br>
-                <span style="-webkit-text-stroke-color:#ffffff !important;" >Design</span></h1>
+            <h1>Contactez<br>
+                <span style="-webkit-text-stroke-color:#ffffff !important;" >Nous</span></h1>
+                <div class="slide-btn"> <a href="#contact">
+                    <div class="lines"> <span></span> <span></span> </div>
+                    <!-- end lines -->
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+               viewBox="0 0 104 104" enable-background="new 0 0 104 104" xml:space="preserve">
+                      <circle class="video-play-circle" fill="none" stroke="#fff" stroke-width="2" stroke-miterlimit="1" cx="52" cy="52" r="50"/>
+                    </svg>
+                    <b>Défiler vers le bas </b> </a> </div>
 
         </div>
+        {{-- this is fucking crazy --}}
         <!-- end container -->
     </div>
     <!-- perspective end  -->
 </header>
 <!-- end header -->
-<section class="hello">
+<section class="hello" id="contact">
     <div class="container">
         <div class="row">
             <div class="col-12 wow fadeIn">

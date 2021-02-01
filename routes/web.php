@@ -85,6 +85,8 @@ Route::get('promotions', function () {
     return view('frontend.pages.references');
 })->name('promotions');
 
+Route::get('detail-service/{slug}', 'FrontendController@detailservice')->name('detailservice');
+
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
